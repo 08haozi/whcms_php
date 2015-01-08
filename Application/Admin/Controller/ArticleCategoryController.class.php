@@ -95,10 +95,10 @@ class ArticleCategoryController extends AdminBaseController
             
             $msg=$this->model->editM($result,$data);
             if($msg===true){
-                $this->error('修改成功！',$SERVER['HTTP_REFERER']);
+                $this->success('修改成功！',$SERVER['HTTP_REFERER']);
             }
             else{
-                $this->success($msg,$SERVER['HTTP_REFERER']);
+                $this->error($msg,$SERVER['HTTP_REFERER']);
             }
             
 //             $this->model->create();

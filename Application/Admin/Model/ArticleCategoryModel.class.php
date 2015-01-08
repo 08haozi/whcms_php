@@ -109,12 +109,12 @@ class ArticleCategoryModel extends Model {
         }
           
         $result =$this->add($data);
-        if(!$result){
+        if(false===$result){
             $this->rollback();
             return '新建失败！';
         }
         //2：更新分类的classList
-        if(!$this->where('id='.$result)->setField('classList',','.$result.',')){
+        if(false===$this->where('id='.$result)->setField('classList',','.$result.',')){
             $this->rollback();
             return '更新分类的classList失败！';
         }
@@ -122,7 +122,7 @@ class ArticleCategoryModel extends Model {
         //3：更新所有上级的classList
         while($parentData){
             $where2['id']=$parentData['id'];
-            if(!$this->where($where2)->setField('classList',$parentData['classList'].$result.',')){
+            if(false===$this->where($where2)->setField('classList',$parentData['classList'].$result.',')){
                 $this->rollback();
                 return '更新上级的classList失败！';
             }
@@ -137,14 +137,17 @@ class ArticleCategoryModel extends Model {
     
     function editM($result,$data){
         if($data['parentID']==$result['parentID']){
-            if($this->where('id='.$result['id'])->save($data)===false){
+            if(false===$this->where('id='.$result['id'])->save($data)){
                 return '修改失败！';
             }
         }
         else{
+            if(false!==strstr($result['classList'], ','.$data['parentID'].',')){
+                return '上级目录不能为自己或子目录！';
+            }
             $this->startTrans();
             
-            $classLayer=$data['classLayer'];//保留原classLayer 用于更新子类
+            $classLayer=$result['classLayer'];//保留原classLayer 用于更新子类
             
             //1：更新该分类
             if($data['parentID']=='0'){
@@ -152,33 +155,48 @@ class ArticleCategoryModel extends Model {
             }
             else{
                 $where1['id']=$data['parentID'];
-                $parentData = $this->where($where1)->find();
-                $data['classLayer']=$parentData['classLayer']+1;
+                $parentDataNow = $this->where($where1)->find();
+                $data['classLayer']=$parentDataNow['classLayer']+1;
             }
-            if($this->where('id='.$id)->save($data)===false){
+            if(false===$this->where('id='.$result['id'])->save($data)){
                 $this->rollback();
                 return '修改失败！';
             }
             
-            //2：更新所有父类的classList
-            $classListArray=explode(',', $data['classList']);
+            //2：更新原来所有父类的classList
+            $where2['id']=$result['parentID'];
+            $parentData = $this->where($where2)->find();
+            $classListArray=array_filter(explode(',', $result['classList']));
             while($parentData){
-                $where2['id']=$parentData['id'];
-                if(!$this->where($where2)->setField('classList',$this->_getUpdateClassList($parentData['classList'], $classListArray))){
+                $where22['id']=$parentData['id'];
+                if(false===$this->where($where22)->setField('classList',$this->_getUpdateClassList($parentData['classList'], $classListArray))){
                     $this->rollback();
-                    return '更新所有父类的classList失败！';
+                    return '更新原来父类的classList失败！';
                 }
-                $where3['id']=$parentData['parentID'];
-                $parentData = $this->where($where3)->find();
+                $where222['id']=$parentData['parentID'];
+                $parentData = $this->where($where222)->find();
             }
             
-            //3：更新所有子类的classLayer
+            //3：更新现在所有父类的classList
+            $where3['id']=$data['parentID'];
+            $parentDataNow = $this->where($where3)->find();
+            while($parentDataNow){
+                $where33['id']=$parentDataNow['id'];
+                if(false===$this->where($where33)->setField('classList',substr($parentDataNow['classList'],0,-1).$result['classList'])){
+                    $this->rollback();
+                    return '更新现在父类的classList失败！';
+                }
+                $where333['id']=$parentDataNow['parentID'];
+                $parentDataNow = $this->where($where333)->find();
+            }
+            
+            //4：更新所有子类的classLayer
             foreach ($classListArray as $value){
-                if($value!=$id){
+                if($value!=$result['id']){
                     $where4['id']=$value;
                     $childData = $this->where($where4)->find();
                     if($childData){
-                        if(!$this->where($where4)->setField('classLayer',$data['classLayer']-$classLayer+$childData['classLayer'])){
+                        if(false===$this->where($where4)->setField('classLayer',$data['classLayer']-$classLayer+$childData['classLayer'])){
                             $this->rollback();
                             return '更新所有子类的classLayer失败！';
                         }
@@ -199,8 +217,8 @@ class ArticleCategoryModel extends Model {
      * @return string 更新后父类的classList
      */
     function _getUpdateClassList($parentClassList,$classListArray){
-        foreach ($classList as $value){
-            str_replace($value.',', '', $parentClassList);
+        foreach ($classListArray as $value){
+            $parentClassList=str_replace($value.',', '', $parentClassList);
         }
         return $parentClassList;
     }
