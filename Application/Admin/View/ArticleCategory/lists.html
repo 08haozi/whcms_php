@@ -1,0 +1,89 @@
+<extend name="./Application/Admin/View/Basic/lists.html" />
+<block name="title">后台管理-文章分类列表</block>
+<block name="main-title">文章分类列表 </block>
+<block name="content-tabs">
+<li role="presentation" class="active"><a
+	href="/Admin/ArticleCategory/lists">全部（{$count}）</a></li>
+</block>
+<block name="content-control">
+	<button type="button" id="btnSelect" class="btn btn-primary btn-sm">全选</button>
+	<button type="button" class="btn btn-danger btn-sm" id="btnDel">删除</button>
+	<a class="btn btn-success btn-sm" href="/Admin/ArticleCategory/add">新建</a>
+</block>
+<block name="content-search">
+</block>
+<block name="content-thead">
+	<tr id="headerMain">
+		<th></th>
+		<th>ID</th>
+		<th>类别名称</th>
+	</tr>
+</block>
+<block name="content-tbody"> 
+	<foreach name="result" item="item" key="i">
+		<tr>
+			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
+			<td>{$item.id}</td>
+			<td>{$item.classLayer} <a href="/Admin/ArticleCategory/edit/id/{$item.id}">{$item.title}</a></td>
+		</tr>
+	</foreach> 
+</block>
+<block name="content-bottom">
+</block>
+<block name="tip">
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">提示框</h4>
+                </div>
+                <div class="modal-body">确定移至回收站？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" id="btnDelConfirm">确定</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+	<script type="text/javascript">
+		$(function(){ 
+			NavTabsSelect(1);
+			LeftMenuSelect(1,3); 
+			
+			var delIDs;
+			$('#btnDel').click(function(){
+				delIDs=GetSelectIDs();
+				if(delIDs==''){
+					var data={'info':'至少选中一项！'};
+					TipShow(data);
+					return;
+				}
+				$('#deleteModal').modal('show');
+			});
+			
+			$('#btnDelConfirm').click(function(){
+				$('#deleteModal').modal('hide');
+				$.ajax({
+					url : "/Admin/Article/delete",
+					data : 'ids='+delIDs,
+					type : "POST",
+					beforeSend : function() {
+					},
+					error : function(request) {
+						TipShow("表单提交出错，请稍候再试");
+					},
+					success : function(data) {
+						TipShow(data,true);
+					}
+				});
+			});
+		}); 
+	</script>
+</block>

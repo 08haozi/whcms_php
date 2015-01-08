@@ -1,0 +1,171 @@
+<extend name="./Application/Admin/View/Basic/add.html" />
+<block name="title">后台管理-修改文章</block>
+<block name="main-title">修改文章</block>
+<block name="contentTab">
+	<ul class="nav nav-tabs" role="tablist">
+	  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">基本信息</a></li>
+	  <li role="presentation"><a href="#content" role="tab" data-toggle="tab">内容详情</a></li>
+	</ul>
+</block>
+<block name="mainMiddle">
+	<!-- Tab panes -->
+	<form class="tab-content form-horizontal" role="form" id="contentForm">
+	  <div role="tabpanel" class="tab-pane active" id="home">
+	  	  <div class="form-group"></div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">分类</label>
+		    <div class="col-sm-4">
+			    <select class="form-control" name="categoryID">
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+				</select>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="title" class="col-sm-2 control-label"><span style="color:red;">*</span> 标题</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="title" value="{$result.title}" placeholder="标题长度为1-255个字符">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="outerLink" class="col-sm-2 control-label">网址</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="outerLink" value="{$result.outerLink}" placeholder="网址长度为0-255个字符">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="summary" class="col-sm-2 control-label">摘要</label>
+		    <div class="col-sm-4">
+		      <textarea class="form-control" rows="3" placeholder="摘要" name="summary">{$result.summary}</textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="createTime" class="col-sm-2 control-label">发布时间</label>
+		    <div class="col-sm-2">
+		      <input type="text" class="form-control" name="createtime" placeholder="时间" value="{$result.createtime}"
+		      onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:ss:mm',skin:'blueFresh',readOnly:true,isShowClear:false})">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="col-sm-2 control-label">审核状态</label>
+		    <div class="col-sm-4">
+		    <table class="rdlTable">
+			    <tr>
+				    <td>
+				    	<input type="radio" class="iCheck" name="isAudit" id="isAudit0" value="0" {$result['isAudit']=='0'?'checked':''}/><label for="isAudit0">不通过</label>
+				    </td>
+				    <td>
+				    	<input type="radio" class="iCheck" name="isAudit" id="isAudit1" value="1"  {$result['isAudit']=='1'?'checked':''}/><label for="isAudit1">通过</label>
+				    </td>
+				    <td>
+				    	<input type="radio" class="iCheck" name="isAudit" id="isAudit2" value="2" {$result['isAudit']=='2'?'checked':''}/><label for="isAudit2">未审核</label>		    
+				    </td>
+			    </tr>
+		    </table>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="sortID" class="col-sm-2 control-label"><span style="color:red;">*</span> 排序</label>
+		    <div class="col-sm-1">
+		      <input type="text" class="form-control" name="sortID" placeholder="数值越小越靠前" value="{$result.sortID}">
+		    </div>
+		  </div>
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="content">
+	  	<div class="form-group"></div>
+	    <div class="form-group">
+		    <label class="col-sm-2 control-label">内容</label>
+		    <div class="col-sm-8">
+		      <script id="container" name="contents" type="text/plain">
+			   {$result.contents}
+    		  </script>
+		    </div>
+		</div>	  	
+	  </div>
+	</form>
+</block>
+<block name="content-bottom">
+	<div id="divControl">
+		<button type="submit" class="btn btn-success btn-lg" id="btnSave">保 存</button>
+		<span id="validateMsg" class="is-error"></span>
+	</div>
+</block>
+
+<block name="js">
+	<script type="text/javascript" src="/statics/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/statics/ueditor143/ueditor.config.js"></script>
+    <script type="text/javascript" src="/statics/ueditor143/ueditor.all.js"></script>   
+	<script type="text/javascript">
+	$(function(){ 
+		NavTabsSelect(1);
+		LeftMenuSelect(1,1);
+		 
+		<!-- 实例化编辑器 -->
+		var ue = UE.getEditor('container');
+		
+		<!-- 验证初始化 -->
+		$contentForm=$('#contentForm');//表单
+		$validateMsg=$('#validateMsg');
+		$contentForm.validate({
+			ignore: [],
+			errorClass : 'is-error',
+			showErrors : function(errorMap, errorList) {
+				if (this.numberOfInvalids() > 0) {
+					$validateMsg.html(this.numberOfInvalids() + '处信息填写有误！')
+							.show();
+					this.defaultShowErrors();
+				} else {
+					$validateMsg.hide();
+				}
+			},
+			rules : {
+				title :{
+					    required: true,
+					    maxlength:255
+				    },
+				outerLink:{
+					maxlength:255
+					},
+				sortID:{
+					required: true,
+					digits:true
+				}
+			},
+			messages : {
+				title : '标题长度为1-255个字符',
+				outerLink : '网址长度为1-255个字符',
+				sortID:'排序为整数'
+			}
+		});
+		
+		$btnSave=$('#btnSave');
+		$btnSave.click(function(){
+			$btnSave.attr('disabled',true);
+			if ($contentForm.valid()) {
+				$.ajax({
+					data : $contentForm.serialize(),
+					type : "POST",
+					beforeSend : function() {
+					},
+					error : function(request) {
+						var data={'info':request.responseText};
+						TipShow2(data);
+						$btnSave.attr('disabled',false);
+					},
+					success : function(data) {
+						TipShow2(data);
+						$btnSave.attr('disabled',false);
+					}
+				});
+			}
+			else{
+				$btnSave.attr('disabled',false);
+			}
+			return false;
+		});
+	});
+	</script>
+</block>	

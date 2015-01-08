@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/www/whcms/ThinkPHP/Common/functions.php</file>
+            <file>file:/D:/xampp/www/whcms/statics/bootstrap/css/dashboard.css</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/View/Article/lists.html</file>
+            <file>file:/D:/xampp/www/whcms/ThinkPHP/Library/Think/Model.class.php</file>
+            <file>file:/D:/xampp/www/whcms/statics/bootstrap/js/admincommon.js</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/Model/ArticleModel.class.php</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/View/Basic/lists.html</file>
+            <file>file:/D:/xampp/www/whcms/index.php</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/Controller/LoginController.class.php</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/Controller/ArticleController.class.php</file>
+            <file>file:/D:/xampp/www/whcms/Application/Admin/Model/ManagerModel.class.php</file>
+        </group>
+    </open-files>
+</project-private>

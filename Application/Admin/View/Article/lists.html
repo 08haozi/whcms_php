@@ -1,0 +1,117 @@
+<extend name="./Application/Admin/View/Basic/lists.html" />
+<block name="title">后台管理-文章列表</block>
+<block name="main-title">内容列表 </block>
+<block name="content-tabs">
+<li role="presentation" class="active"><a
+	href="/Admin/Article/lists">全部（{$count}）</a></li>
+<li><a href="#">热卖</a></li>
+</block>
+<block name="content-control">
+	<button type="button" id="btnSelect" class="btn btn-primary btn-sm">全选</button>
+	<button type="button" class="btn btn-danger btn-sm" id="btnDel">移至回收站</button>
+	<a class="btn btn-success btn-sm" href="/Admin/Article/add">新建</a>
+</block>
+<block name="content-search">
+	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
+		<div class="form-group">
+			<label class="sr-only" for="beginTime">发布时间：</label>
+			<input type="text" class="form-control" name="beginTime" value="{$sBegin}"
+				placeholder="开始时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'blueFresh',readOnly:true})">
+				<span>至</span>
+			<input type="text" class="form-control" name="endTime" value="{$sEnd}"
+				placeholder="结束时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'blueFresh',readOnly:true})">	
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="title">标题：</label>
+			<input class="form-control" type="text" placeholder="请输入标题" name="title" value="{$sTitle}">
+		</div>
+		<button type="submit" class="btn btn-default">搜 索</button>
+	</form>
+</block>
+<block name="content-thead">
+	<tr id="headerMain">
+		<th></th>
+		<th>ID</th>
+		<th>标题</th>
+		<th>分类</th>
+		<th>摘要</th>
+		<th>发布时间</th>
+		<th>排序</th>
+	</tr>
+</block>
+<block name="content-tbody"> 
+	<foreach name="result" item="item" key="i">
+		<tr>
+			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
+			<td>{$item.id}</td>
+			<td><a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a></td>
+			<td>{$item.categoryID}</td>
+			<td>{$item.summary}</td>
+			<td>{$item.createtime}</td>
+			<td>{$item.sortID}</td>
+		</tr>
+	</foreach> 
+</block>
+<block name="content-bottom">
+	<ul class="pagination">
+		{$page|getPage=$pageNum,$count,$pageLink}
+	</ul>
+</block>
+<block name="tip">
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">提示框</h4>
+                </div>
+                <div class="modal-body">确定移至回收站？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" id="btnDelConfirm">确定</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+	<script type="text/javascript" src="/statics/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+		$(function(){ 
+			NavTabsSelect(1);
+			LeftMenuSelect(1,0); 
+			
+			var delIDs;
+			$('#btnDel').click(function(){
+				delIDs=GetSelectIDs();
+				if(delIDs==''){
+					var data={'info':'至少选中一项！'};
+					TipShow(data);
+					return;
+				}
+				$('#deleteModal').modal('show');
+			});
+			
+			$('#btnDelConfirm').click(function(){
+				$('#deleteModal').modal('hide');
+				$.ajax({
+					url : "/Admin/Article/recycle",
+					data : 'ids='+delIDs,
+					type : "POST",
+					beforeSend : function() {
+					},
+					error : function(request) {
+						TipShow("表单提交出错，请稍候再试");
+					},
+					success : function(data) {
+						TipShow(data,true);
+					}
+				});
+			});
+		}); 
+	</script>
+</block>

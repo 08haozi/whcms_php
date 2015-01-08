@@ -1,0 +1,247 @@
+[ 2015-01-08T10:04:46+08:00 ] 127.0.0.1 /admin/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019001s ]
+
+[ 2015-01-08T10:04:50+08:00 ] 127.0.0.1 /admin/login/dologin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_manager` [ RunTime:0.014001s ]
+SQL: SELECT * FROM `cms_manager` WHERE ( username='admin' and password='4297f44b13955235245b2497399d7a93' ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:04:51+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+
+[ 2015-01-08T10:04:59+08:00 ] 127.0.0.1 /admin/article
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:05:07+08:00 ] 127.0.0.1 /Admin/ArticleCategory/Add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-01-08T10:05:09+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:05:13+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:05:21+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:05:28+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-01-08T10:07:51+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:07:53+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-01-08T10:07:55+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 2 for Admin\Model\ArticleCategoryModel::editM(), called in D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php on line 96 and defined D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 138 行.
+NOTIC: [8] Undefined variable: data D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 139 行.
+NOTIC: [8] Undefined variable: result D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 139 行.
+NOTIC: [8] Array to string conversion D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 140 行.
+NOTIC: [8] Undefined variable: data D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 140 行.
+SQL: UPDATE `cms_article_category` SET `id`=20,`title`='分类1',`callIndex`=null,`parentID`=0,`classList`=',21,22,',`classLayer`=0,`sortID`=99,`linkUrl`=null,`imgUrl`=null,`contents`=null WHERE ( id=Array ) [ RunTime:0.007000s ]
+ERR: 1054:Unknown column 'Array' in 'where clause'
+ [ SQL语句 ] : UPDATE `cms_article_category` SET `id`=20,`title`='分类1',`callIndex`=null,`parentID`=0,`classList`=',21,22,',`classLayer`=0,`sortID`=99,`linkUrl`=null,`imgUrl`=null,`contents`=null WHERE ( id=Array )
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 97 行.
+
+[ 2015-01-08T10:08:43+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.007001s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 2 for Admin\Model\ArticleCategoryModel::editM(), called in D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php on line 96 and defined D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 138 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: data D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 139 行.
+NOTIC: [8] Undefined variable: result D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 139 行.
+NOTIC: [8] Array to string conversion D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 140 行.
+NOTIC: [8] Undefined variable: data D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 140 行.
+SQL: UPDATE `cms_article_category` SET `id`=20,`title`='分类1',`callIndex`=null,`parentID`=0,`classList`=',21,22,',`classLayer`=0,`sortID`=99,`linkUrl`=null,`imgUrl`=null,`contents`=null WHERE ( id=Array ) [ RunTime:0.001000s ]
+ERR: 1054:Unknown column 'Array' in 'where clause'
+ [ SQL语句 ] : UPDATE `cms_article_category` SET `id`=20,`title`='分类1',`callIndex`=null,`parentID`=0,`classList`=',21,22,',`classLayer`=0,`sortID`=99,`linkUrl`=null,`imgUrl`=null,`contents`=null WHERE ( id=Array )
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 97 行.
+
+[ 2015-01-08T10:11:16+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: result D:\xampp\www\whcms\Application\Admin\Model\ArticleCategoryModel.class.php 第 139 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+
+[ 2015-01-08T10:12:55+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+NOTIC: [8] Undefined variable: parentData xdebug://debug-eval 第 1 行.
+SQL: UPDATE `cms_article_category` SET `parentID`=0,`title`='分类123',`sortID`=99 WHERE ( id=20 ) [ RunTime:0.010001s ]
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 100 行.
+
+[ 2015-01-08T10:13:22+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+
+[ 2015-01-08T10:13:23+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:13:34+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:13:43+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:13:50+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.006000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 20 LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `cms_article_category` SET `parentID`=0,`title`='分类4',`sortID`=100 WHERE ( id=20 ) [ RunTime:0.005000s ]
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 100 行.
+
+[ 2015-01-08T10:13:54+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:31:30+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/23
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+
+[ 2015-01-08T10:31:34+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/23
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 23 LIMIT 1   [ RunTime:0.001000s ]
+SQL: UPDATE `cms_article_category` SET `parentID`=0,`title`='分类234',`sortID`=99 WHERE ( id=23 ) [ RunTime:0.011000s ]
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 100 行.
+
+[ 2015-01-08T10:31:38+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-01-08T10:31:40+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/22
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-01-08T10:31:54+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:37:51+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:37:55+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/26
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+
+[ 2015-01-08T10:37:59+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/26
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\www\whcms\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cms_article_category` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `cms_article_category` WHERE `id` = 26 LIMIT 1   [ RunTime:0.001001s ]
+SQL: UPDATE `cms_article_category` SET `parentID`=0,`title`='分类3asd',`sortID`=99 WHERE ( id=26 ) [ RunTime:0.006000s ]
+NOTIC: [8] Undefined variable: SERVER D:\xampp\www\whcms\Application\Admin\Controller\ArticleCategoryController.class.php 第 100 行.
+
+[ 2015-01-08T10:37:59+08:00 ] 127.0.0.1 /Admin/ArticleCategory/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-01-08T10:38:39+08:00 ] 127.0.0.1 /Admin/ArticleCategory/edit/id/29
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
