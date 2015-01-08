@@ -158,7 +158,7 @@
         <script src="/statics/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
         <script src="/statics/js/menu.js"></script>
         <script src="/statics/iCheck/icheck.js"></script>
-        <script src="/statics/js/addcommon.js"></script>
+        <script src="/statics/js/commonAdd.js"></script>
         <script type="text/javascript" src="/statics/js/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="/statics/bootstrap/js/messages_cn.js"></script>
         
