@@ -121,3 +121,6 @@ body {
 .rdlTable{margin-top:5px;}
 .rdlTable td{padding-right:10px;}
 .is-error {color: #a94442;border-color: #a94442;}
+
+/*桌面*/
+.index-main{padding:40px;}
