@@ -14,11 +14,10 @@ $mainTop=$('#mainTop');
 function UIInit() {
     $main.css('margin-top', $navTabs.height() + 1 + 'px');
     $mainTop.css('top', $navTabs.height() + $navBar.height() + 1 + 'px').css('width', $rightContent.width()+ 'px').show();
-    $mainMiddle.css('margin-top', $mainTop.height()-$headerClone.height()- 2 + 'px').css('margin-bottom', $mainBottom.height() + 'px').show();
+    $mainMiddle.css('margin-top', $mainTop.height()-$headerClone.height()- 2 + 'px').css('margin-bottom','100px').show();
     $mainTop.css('width', $rightContent.width()+ 'px');
     $mainBottom.css('width', $rightContent.width() + 'px');
-    $pagination.css('margin-left', $mainMiddle.width() / 2 - 116 + 'px');
-    $mainBottom.show();
+    $pagination.css('margin-left', $mainMiddle.width() / 2 - 116 + 'px').show();
     Freezeheader();
 }
 

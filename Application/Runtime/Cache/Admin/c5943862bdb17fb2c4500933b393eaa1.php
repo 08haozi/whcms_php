@@ -82,7 +82,7 @@
 		  <div class="form-group">
 		    <label for="parentID" class="col-sm-2 control-label">上级分类</label>
 		    <div class="col-sm-4">
-			    <?php echo D('ArticleCategory')->getSelectHtml();?>
+			    <?php echo D('ArticleCategory')->getSelectHtml('parentID');?>
 		    </div>
 		  </div>
 		  <div class="form-group">

@@ -14,6 +14,10 @@
 <block name="content-search">
 	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
 		<div class="form-group">
+			<label class="sr-only" for="title">分类：</label>
+			{:D('ArticleCategory')->getSelectHtml('categoryID',$categoryID)}
+		</div>
+		<div class="form-group">
 			<label class="sr-only" for="beginTime">发布时间：</label>
 			<input type="text" class="form-control" name="beginTime" value="{$sBegin}"
 				placeholder="开始时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'blueFresh',readOnly:true})">
@@ -25,7 +29,7 @@
 			<label class="sr-only" for="title">标题：</label>
 			<input class="form-control" type="text" placeholder="请输入标题" name="title" value="{$sTitle}">
 		</div>
-		<button type="submit" class="btn btn-default">搜 索</button>
+		<button type="submit" class="btn btn-warning">搜 索</button>
 	</form>
 </block>
 <block name="content-thead">
@@ -45,7 +49,7 @@
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
 			<td>{$item.id}</td>
 			<td><a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a></td>
-			<td>{$item.categoryID}</td>
+			<td>{:$categoryArray[$item['categoryID']]}</td>
 			<td>{$item.summary}</td>
 			<td>{$item.createtime}</td>
 			<td>{$item.sortID}</td>

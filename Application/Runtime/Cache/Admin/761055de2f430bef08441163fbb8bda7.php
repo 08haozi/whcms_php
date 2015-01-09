@@ -83,13 +83,7 @@
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">分类</label>
 		    <div class="col-sm-4">
-			    <select class="form-control" name="categoryID">
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				</select>
+		    	<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$result['categoryID']);?>
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -213,7 +207,7 @@
         <script src="/statics/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
         <script src="/statics/js/menu.js"></script>
         <script src="/statics/iCheck/icheck.js"></script>
-        <script src="/statics/js/addcommon.js"></script>
+        <script src="/statics/js/commonAdd.js"></script>
         <script type="text/javascript" src="/statics/js/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="/statics/bootstrap/js/messages_cn.js"></script>
         
@@ -223,7 +217,7 @@
 	<script type="text/javascript">
 	$(function(){ 
 		NavTabsSelect(1);
-		LeftMenuSelect(1,1);
+		LeftMenuSelect(1);
 		 
 		<!-- 实例化编辑器 -->
 		var ue = UE.getEditor('container');

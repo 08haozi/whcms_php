@@ -103,6 +103,7 @@
 		<th></th>
 		<th>ID</th>
 		<th>类别名称</th>
+		<th>list</th>
 	</tr>
 
                             </thead>
@@ -112,6 +113,7 @@
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="<?php echo ($item["id"]); ?>" /></td>
 			<td><?php echo ($item["id"]); ?></td>
 			<td><?php echo ($item["classLayer"]); ?> <a href="/Admin/ArticleCategory/edit/id/<?php echo ($item["id"]); ?>"><?php echo ($item["title"]); ?></a></td>
+			<td><?php echo ($item["classList"]); ?></td>
 		</tr><?php endforeach; endif; ?> 
 
                             </tbody>
@@ -138,7 +140,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">提示框</h4>
                 </div>
-                <div class="modal-body">确定移至回收站？</div>
+                <div class="modal-body">确定删除？</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-danger" id="btnDelConfirm">确定</button>
@@ -194,7 +196,7 @@
 			$('#btnDelConfirm').click(function(){
 				$('#deleteModal').modal('hide');
 				$.ajax({
-					url : "/Admin/Article/delete",
+					url : "/Admin/ArticleCategory/delete",
 					data : 'ids='+delIDs,
 					type : "POST",
 					beforeSend : function() {

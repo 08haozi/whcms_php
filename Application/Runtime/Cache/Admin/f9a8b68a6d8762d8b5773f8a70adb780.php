@@ -86,6 +86,10 @@
                                     
 	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
 		<div class="form-group">
+			<label class="sr-only" for="title">分类：</label>
+			<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$categoryID);?>
+		</div>
+		<div class="form-group">
 			<label class="sr-only" for="beginTime">发布时间：</label>
 			<input type="text" class="form-control" name="beginTime" value="<?php echo ($sBegin); ?>"
 				placeholder="开始时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'blueFresh',readOnly:true})">
@@ -97,7 +101,7 @@
 			<label class="sr-only" for="title">标题：</label>
 			<input class="form-control" type="text" placeholder="请输入标题" name="title" value="<?php echo ($sTitle); ?>">
 		</div>
-		<button type="submit" class="btn btn-default">搜 索</button>
+		<button type="submit" class="btn btn-warning">搜 索</button>
 	</form>
 
                                 </div>
@@ -132,7 +136,7 @@
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="<?php echo ($item["id"]); ?>" /></td>
 			<td><?php echo ($item["id"]); ?></td>
 			<td><a href="/Admin/Article/edit/id/<?php echo ($item["id"]); ?>"><?php echo ($item["title"]); ?></a></td>
-			<td><?php echo ($item["categoryID"]); ?></td>
+			<td><?php echo $categoryArray[$item['categoryID']];?></td>
 			<td><?php echo ($item["summary"]); ?></td>
 			<td><?php echo ($item["createtime"]); ?></td>
 			<td><?php echo ($item["sortID"]); ?></td>
@@ -199,7 +203,7 @@
         <script src="/statics/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
         <script src="/statics/js/menu.js"></script>
         <script src="/statics/iCheck/icheck.js"></script>
-        <script src="/statics/js/listcommon.js"></script>
+        <script src="/statics/js/commonList.js"></script>
        
         
 	<script type="text/javascript" src="/statics/My97DatePicker/WdatePicker.js"></script>

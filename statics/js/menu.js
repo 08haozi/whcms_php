@@ -9,7 +9,7 @@ $pagination = $('.pagination');
 $divControl=$('#divControl');
 
 var navList = [
-    ['首页', '#'],
+    ['桌面', '/Admin/index'],
     ['文章', '#'],
     ['系统', '#'],
     ['帮助','#']

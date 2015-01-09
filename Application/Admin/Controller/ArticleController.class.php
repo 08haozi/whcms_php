@@ -112,9 +112,14 @@ class ArticleController extends AdminBaseController
         
         $where['isDel']=0;
         
+        $categoryID=I('get.categoryID');    //分类ID
         $begin=I('get.beginTime');   //开始时间
         $end=I('get.endTime');       //结束时间
         $title=I('get.title');   //标题
+        if(!empty($categoryID)&&$categoryID!=='0'){
+            $where['categoryID']=$categoryID;
+            $pageLink.='/categoryID/'.$categoryID;
+        }
         if(!empty($begin)&&!empty($end)){
             $where['createtime']=array('between',$begin.' 00:00:00,'.$end.' 23:59:59');
             $pageLink.='/txbBegin/'.$begin.'/txbEnd/'.$end;
@@ -145,14 +150,18 @@ class ArticleController extends AdminBaseController
         
         $count = $this->model->where($where)->count();
         
-        $this->assign('sBegin', $begin)
+        $categoryArray=D('ArticleCategory')->getArray();
+        
+        $this->assign('categoryID', $categoryID)
+             ->assign('sBegin', $begin)
              ->assign('sEnd', $end)
              ->assign('sTitle', $title)
              ->assign('result', $result)
              ->assign('pageLink', $pageLink)
              ->assign('page', $page)
              ->assign('pageNum', $pageNum)
-             ->assign('count', $count);
+             ->assign('count', $count)
+             ->assign('categoryArray',$categoryArray);
         
         $this->display('lists');
     }

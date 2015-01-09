@@ -109,7 +109,8 @@ body {
 #main{}
 #mainTop{position: fixed;z-index: 99;background: #fff;display:none;}
 #mainMiddle{display:none;}
-#mainBottom{position: fixed;background: #fff;bottom:0;z-index:1040;}
+#mainBottom{position: fixed;background: #fff;bottom:0;z-index:1040;height:100px;}
+#mainBottom ul{display:none;}
 #txbKeyword{margin-top:5px;margin-left: -3px;}
 #tableClone{margin-bottom:0;background:#ddd;}
 #contentTitle{margin-bottom: 10px;}
@@ -124,3 +125,6 @@ body {
 
 /*桌面*/
 .index-main{padding:40px;}
+.index-count{text-align:center;}
+.index-count div{width:250px;height:250px;text-algin:center;margin:0 auto;
+line-height:250px;font-size:35px;font-weight:bold;color:#fff;}

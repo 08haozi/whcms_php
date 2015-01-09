@@ -82,7 +82,7 @@
 		  <div class="form-group">
 		    <label for="parentID" class="col-sm-2 control-label">上级分类</label>
 		    <div class="col-sm-4">
-		    <?php echo (d('articlecategory')->getselecthtml($result["parentID"])); ?>
+		    <?php echo (d('articlecategory')->getselecthtml('parentID',$result["parentID"])); ?>
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -165,7 +165,7 @@
 	<script type="text/javascript">
 	$(function(){ 
 		NavTabsSelect(1);
-		LeftMenuSelect(1,4);
+		LeftMenuSelect(1);
 		
 		<!-- 验证初始化 -->
 		$contentForm=$('#contentForm');//表单

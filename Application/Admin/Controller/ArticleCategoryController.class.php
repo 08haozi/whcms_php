@@ -100,13 +100,6 @@ class ArticleCategoryController extends AdminBaseController
             else{
                 $this->error($msg,$SERVER['HTTP_REFERER']);
             }
-            
-//             $this->model->create();
-
-//             if($this->model->where('id='.$result['id'])->save()===false){
-//                 $this->error('操作失败！',$SERVER['HTTP_REFERER']);
-//             }
-//             $this->success('修改成功！',$SERVER['HTTP_REFERER']);
         }
         else{
             $this->assign('result',$result);
@@ -118,7 +111,12 @@ class ArticleCategoryController extends AdminBaseController
      * 删除
      */
     function delete(){
-        
+        $idArray=array_filter(explode(',', I('post.ids')));
+        foreach ($idArray as $id){
+            $this->model->deleteM($id);
+        }
+
+        $this->success('删除成功，页面自动刷新！');
     }
     
 }
