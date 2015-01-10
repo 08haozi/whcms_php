@@ -93,6 +93,12 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
+		    <label for="outerLink" class="col-sm-2 control-label">图片</label>
+		    <div class="col-sm-4">
+		      <input type="file" name="imgLink">
+		    </div>
+		  </div>
+		  <div class="form-group">
 		    <label for="outerLink" class="col-sm-2 control-label">网址</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" name="outerLink" placeholder="网址长度为0-255个字符">
@@ -199,6 +205,7 @@
 			</div>
 		</div>
         <script src="/statics/js/jquery.min.js"></script>
+        <script src="/statics/js/jquery.form.js"></script>
         <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
         <script src="/statics/bootstrap/js/docs.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -259,21 +266,24 @@
 		$btnSave.click(function(){
 			$btnSave.attr('disabled',true);
 			if ($contentForm.valid()) {
-				$.ajax({
-					data : $contentForm.serialize(),
-					type : "POST",
-					beforeSend : function() {
-					},
-					error : function(request) {
+				$contentForm.ajaxSubmit({
+	                //定义返回JSON数据，还包括xml和script格式
+	                type:'POST',
+	                dataType:'json',
+	                url:'/Admin/Article/add',
+	                beforeSend: function() {	                    
+	                },
+	                success: function(data) {
+	                	TipShow(data);
+						$btnSave.attr('disabled',false);
+	                },
+	                error : function(request) {
 						var data={'info':request.responseText};
 						TipShow(data);
 						$btnSave.attr('disabled',false);
 					},
-					success : function(data) {
-						TipShow(data);
-						$btnSave.attr('disabled',false);
-					}
-				});
+	            });
+				
 			}
 			else{
 				$btnSave.attr('disabled',false);
