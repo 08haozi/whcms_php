@@ -142,7 +142,7 @@
 		    <label class="col-sm-2 control-label">内容</label>
 		    <div class="col-sm-8">
 		      <script id="container" name="contents" type="text/plain">
-			   <?php echo ($result["contents"]); ?>
+				<?php echo (htmlspecialchars_decode($result["contents"])); ?>
     		  </script>
 		    </div>
 		</div>	  	

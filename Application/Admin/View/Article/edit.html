@@ -74,7 +74,7 @@
 		    <label class="col-sm-2 control-label">内容</label>
 		    <div class="col-sm-8">
 		      <script id="container" name="contents" type="text/plain">
-			   {$result.contents}
+				{$result.contents|htmlspecialchars_decode}
     		  </script>
 		    </div>
 		</div>	  	
