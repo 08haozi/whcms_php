@@ -77,9 +77,9 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     
-	<button type="button" id="btnSelect" class="btn btn-primary btn-sm">全选</button>
+	<button type="button" id="btnSelect" class="btn btn-info btn-sm">全 选</button>
 	<button type="button" class="btn btn-danger btn-sm" id="btnDel">移至回收站</button>
-	<a class="btn btn-success btn-sm" href="/Admin/Article/add">新建</a>
+	<a class="btn btn-success btn-sm" href="/Admin/Article/add">新 建</a>
 
                                 </div>
                                 <div class="col-xs-12 col-md-9">
@@ -110,7 +110,7 @@
                         <div id="contentHeader">
                             <table id="tableClone" class="table table-striped table-hover table-responsive">
                                 <thead>
-                                    <tr id="headerClone"></tr>
+                                    <tr id="headerClone" class="btn-primary"></tr>
                                 </thead>
                             </table>
                         </div>

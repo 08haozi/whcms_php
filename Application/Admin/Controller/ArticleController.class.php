@@ -33,7 +33,7 @@ class ArticleController extends AdminBaseController
      */
     function lists()
     {
-        $this->_search();
+        $this->_search(0,'lists');
     }
     
     /**
@@ -41,21 +41,26 @@ class ArticleController extends AdminBaseController
      */
     function search()
     {
-        $this->_search();
+        $this->_search(0,'lists');
     }
     
     /**
      * 回收站
      */
     function recycle(){
-        $where['id']=array('in',I('post.ids'));
-        
-        $data['isDel']=1;
-        
-        $this->model
-             ->where($where)
-             ->save($data);
-        $this->success('移至回收站成功，页面自动刷新！');
+        if(IS_POST){
+            $where['id']=array('in',I('post.ids'));
+            
+            $data['isDel']=1;
+            
+            $this->model
+            ->where($where)
+            ->save($data);
+            $this->success('移至回收站成功，页面自动刷新！'); 
+        }
+        else{
+            $this->_search(1,'recycle');
+        }
     }
     
     /**
@@ -105,12 +110,14 @@ class ArticleController extends AdminBaseController
 
     /**
      * 搜索
+     * @param int $isDel 是否已删除 1是 0否
+     * @param string $templateName 模板名称
      */
-    private function _search()
+    private function _search($isDel,$templateName)
     {
-        $pageLink='/Admin/Article/lists';
+        $pageLink='/Admin/Article/'.$templateName;
         
-        $where['isDel']=0;
+        $where['isDel']=$isDel;
         
         $categoryID=I('get.categoryID');    //分类ID
         $begin=I('get.beginTime');   //开始时间
@@ -163,6 +170,6 @@ class ArticleController extends AdminBaseController
              ->assign('count', $count)
              ->assign('categoryArray',$categoryArray);
         
-        $this->display('lists');
+        $this->display($templateName);
     }
 }

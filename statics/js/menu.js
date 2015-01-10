@@ -20,7 +20,7 @@ var navChildrenList = [
         ['文章管理', 
          ['文章列表', '/Admin/Article/lists'], 
          ['新建文章', '/Admin/Article/Add'],
-         ['回收站','Admin/Article/']
+         ['回收站','/Admin/Article/recycle']
         ],
         ['分类管理', 
          ['分类列表', '/Admin/ArticleCategory/lists'], 
