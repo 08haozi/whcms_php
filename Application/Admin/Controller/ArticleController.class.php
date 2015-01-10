@@ -54,12 +54,56 @@ class ArticleController extends AdminBaseController
             $data['isDel']=1;
             
             $this->model
-            ->where($where)
-            ->save($data);
+                 ->where($where)
+                 ->save($data);
             $this->success('移至回收站成功，页面自动刷新！'); 
         }
         else{
             $this->_search(1,'recycle');
+        }
+    }
+    
+    /**
+     * 删除
+     */
+    function delete(){
+        if(IS_POST){
+            $where['id']=array('in',I('post.ids'));
+        
+            $this->model
+                 ->where($where)
+                 ->delete();
+            $this->success('删除成功，页面自动刷新！');
+        }
+    }
+    
+    /**
+     * 清空回收站
+     */
+    function deleteAll(){
+        if(IS_POST){
+            $where['isDel']=1;
+    
+            $this->model
+            ->where($where)
+            ->delete();
+            $this->success('清空回收站成功，页面自动刷新！');
+        }
+    }
+    
+    /**
+     * 还原
+     */
+    function restore(){
+        if(IS_POST){
+            $where['id']=array('in',I('post.ids'));
+            
+            $data['isDel']=0;
+            
+            $this->model
+                 ->where($where)
+                 ->save($data);
+            $this->success('还原成功，页面自动刷新！');
         }
     }
     
