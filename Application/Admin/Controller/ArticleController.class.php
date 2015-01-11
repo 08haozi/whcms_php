@@ -137,6 +137,10 @@ class ArticleController extends AdminBaseController
         }
     }
 
+    /**
+     * 标题图片上传
+     * @return boolean|string 失败返回false，成功返回图片路径
+     */
     function upload()
     {
         $upload = new \Think\Upload(); // 实例化上传类
@@ -148,8 +152,8 @@ class ArticleController extends AdminBaseController
         $info = $upload->upload();
         if (!$info) {
             // 上传错误提示错误信息
-            return $upload->getError();
-            //return false;
+            //return $upload->getError();
+            return false;
         } else {
             // 上传成功
             return '/upload/article/title/'.$info['imgLink']['savepath'].$info['imgLink']['savename'];
@@ -169,6 +173,20 @@ class ArticleController extends AdminBaseController
         
         if (IS_POST) {
             $this->model->create();
+            
+            // 保存标题图片
+            if (count($_FILES)>0){
+                $uploadResult=$this->upload();
+                if(false===$uploadResult){
+                    $this->error('图片有误！');
+                }
+                else{
+                    $this->model->imgLink=$uploadResult;
+                }
+            }
+            else{
+                $this->model->imgLink=$result['imgLink'];
+            }
             
             if ($this->model->where('id=' . $result['id'])->save() === false) {
                 $this->error('操作失败！', $SERVER['HTTP_REFERER']);

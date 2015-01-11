@@ -65,6 +65,7 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="rightContent">
                     <div id="mainTop">
                         <h4 id="contentTitle">
+                        	<span class="glyphicon glyphicon-edit"></span>
                             修改文章
                         </h4>
                         
@@ -91,6 +92,13 @@
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" name="title" value="<?php echo ($result["title"]); ?>" placeholder="标题长度为1-255个字符">
 		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="outerLink" class="col-sm-2 control-label">图片</label>
+		    <?php if(strlen($result['imgLink']) > 0): ?><div class="col-sm-2"><img src="<?php echo ($result["imgLink"]); ?>" class="imgTitle"></div>
+				<div class="col-sm-2"><input type="file" name="imgLink" value="<?php echo ($result["imgLink"]); ?>"></div>
+			<?php else: ?>
+				<div class="col-sm-4"><input type="file" name="imgLink"></div><?php endif; ?> 
 		  </div>
 		  <div class="form-group">
 		    <label for="outerLink" class="col-sm-2 control-label">网址</label>
@@ -181,25 +189,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="sucMsgModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">提示框</h4>
-					</div>
-					<div class="modal-body" id="sucMsgModalBody"></div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">添加相似</button>
-						<a class="btn btn-warning" href="lists">返回列表</a>
-						<a class="btn btn-success" href="add">继续添加</a>
-					</div>
-				</div>
-			</div>
-		</div>
         <script src="/statics/js/jquery.min.js"></script>
         <script src="/statics/js/jquery.form.js"></script>
         <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
@@ -219,13 +208,11 @@
 	$(function(){ 
 		NavTabsSelect(1);
 		LeftMenuSelect(1);
+		TipSet(TipShow2);
 		 
 		<!-- 实例化编辑器 -->
 		var ue = UE.getEditor('container');
 		
-		<!-- 验证初始化 -->
-		$contentForm=$('#contentForm');//表单
-		$validateMsg=$('#validateMsg');
 		$contentForm.validate({
 			ignore: [],
 			errorClass : 'is-error',
@@ -256,32 +243,6 @@
 				outerLink : '网址长度为1-255个字符',
 				sortID:'排序为整数'
 			}
-		});
-		
-		$btnSave=$('#btnSave');
-		$btnSave.click(function(){
-			$btnSave.attr('disabled',true);
-			if ($contentForm.valid()) {
-				$.ajax({
-					data : $contentForm.serialize(),
-					type : "POST",
-					beforeSend : function() {
-					},
-					error : function(request) {
-						var data={'info':request.responseText};
-						TipShow2(data);
-						$btnSave.attr('disabled',false);
-					},
-					success : function(data) {
-						TipShow2(data);
-						$btnSave.attr('disabled',false);
-					}
-				});
-			}
-			else{
-				$btnSave.attr('disabled',false);
-			}
-			return false;
 		});
 	});
 	</script>

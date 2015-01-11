@@ -18,13 +18,13 @@ var navChildrenList = [
     null,
     [
         ['文章管理', 
-         ['文章列表', '/Admin/Article/lists'], 
-         ['新建文章', '/Admin/Article/Add'],
-         ['回收站','/Admin/Article/recycle']
+         ['文章列表', '/Admin/Article/lists','glyphicon glyphicon-align-justify'], 
+         ['新建文章', '/Admin/Article/Add','glyphicon glyphicon-plus'],
+         ['回收站','/Admin/Article/recycle','glyphicon glyphicon-trash']
         ],
         ['分类管理', 
-         ['分类列表', '/Admin/ArticleCategory/lists'], 
-         ['新建分类', '/Admin/ArticleCategory/Add']
+         ['分类列表', '/Admin/ArticleCategory/lists','glyphicon glyphicon-align-justify'], 
+         ['新建分类', '/Admin/ArticleCategory/Add','glyphicon glyphicon-plus']
         ]
     ],
     null,
@@ -41,7 +41,7 @@ function NavInit() {
             for (j = 0; j < navChildrenList[i].length; j++) {
                 navHtml += ' <li class="dropdown-header">' + navChildrenList[i][j][0] + ' <span class="caret"></span></li>';
                 for (z = 1; z < navChildrenList[i][j].length; z++) {
-                    navHtml += '<li><a href="' + navChildrenList[i][j][z][1] + '">' + navChildrenList[i][j][z][0] + '</a></li>';
+                    navHtml += '<li><a href="' + navChildrenList[i][j][z][1] + '"><span class="'+ navChildrenList[i][j][z][2] +'"></span> '  + navChildrenList[i][j][z][0] + '</a></li>';
                 }
                 navHtml += '<li class="divider"></li>';
             }
@@ -62,7 +62,7 @@ function LeftMenuSelect(index0, index1) {
         for (i = 0; i < navChildrenList[index0].length; i++) {
             menuHtml += '<ul class="nav nav-sidebar" ><li class="dropdown-header">' + navChildrenList[index0][i][0] + '<span class="caret"></span></li>';
             for (j = 1; j < navChildrenList[index0][i].length; j++) {
-                menuHtml += '<li ' + ((count == index1) ? 'class="active"' : '') + '><a href="' + navChildrenList[index0][i][j][1] + '">' + navChildrenList[index0][i][j][0] + '</a></li>';
+                menuHtml += '<li ' + ((count == index1) ? 'class="active"' : '') + '><a href="' + navChildrenList[index0][i][j][1] + '"><span class="'+ navChildrenList[index0][i][j][2] +'"></span> ' + navChildrenList[index0][i][j][0] + '</a></li>';
                 count++;
             }
             menuHtml += '</ul>';

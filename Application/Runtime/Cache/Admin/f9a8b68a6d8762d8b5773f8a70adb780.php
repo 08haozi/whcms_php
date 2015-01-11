@@ -64,6 +64,7 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="rightContent">
                     <div id="mainTop">
                         <h4 id="contentTitle">
+                        	<span class="glyphicon glyphicon-align-justify"></span>
                             内容列表 
                         </h4>
                         <ul role="tablist" class="nav nav-tabs" id="contentTabs">
@@ -121,7 +122,6 @@
                             
 	<tr id="headerMain">
 		<th></th>
-		<th>ID</th>
 		<th>标题</th>
 		<th>分类</th>
 		<th>摘要</th>
@@ -134,8 +134,11 @@
                              
 	<?php if(is_array($result)): foreach($result as $i=>$item): ?><tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="<?php echo ($item["id"]); ?>" /></td>
-			<td><?php echo ($item["id"]); ?></td>
-			<td><a href="/Admin/Article/edit/id/<?php echo ($item["id"]); ?>"><?php echo ($item["title"]); ?></a></td>
+			<td>
+				<a href="/Admin/Article/edit/id/<?php echo ($item["id"]); ?>"><?php echo ($item["title"]); ?></a>
+				<?php if(strlen($item['imgLink']) > 0): ?><a href="<?php echo ($item["imgLink"]); ?>" target="_blank"> <span class="glyphicon glyphicon-picture"></span></a><?php endif; ?>
+				<?php if(strlen($item['outerLink']) > 0): ?><a href="<?php echo ($item["outerLink"]); ?>" target="_blank"> <span class="glyphicon glyphicon-link"></span></a><?php endif; ?>
+			</td>
 			<td><?php echo $categoryArray[$item['categoryID']];?></td>
 			<td><?php echo ($item["summary"]); ?></td>
 			<td><?php echo ($item["createtime"]); ?></td>

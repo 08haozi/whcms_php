@@ -82,7 +82,7 @@
 		  <div class="form-group">
 		    <label for="parentID" class="col-sm-2 control-label">上级分类</label>
 		    <div class="col-sm-4">
-		    <?php echo (d('articlecategory')->getselecthtml('parentID',$result["parentID"])); ?>
+		    	<?php echo D('ArticleCategory')->getSelectHtml('parentID',$result['parentID']);?>
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -105,6 +105,7 @@
                         
 	<div id="divControl">
 		<button type="submit" class="btn btn-success btn-lg" id="btnSave">保 存</button>
+		<img src="/statics/img/loading.gif" alt="加载中..." class="loading"/>
 		<span id="validateMsg" class="is-error"></span>
 	</div>
 
@@ -152,6 +153,7 @@
 			</div>
 		</div>
         <script src="/statics/js/jquery.min.js"></script>
+        <script src="/statics/js/jquery.form.js"></script>
         <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
         <script src="/statics/bootstrap/js/docs.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -166,10 +168,9 @@
 	$(function(){ 
 		NavTabsSelect(1);
 		LeftMenuSelect(1);
+		TipSet(TipShow2);
 		
 		<!-- 验证初始化 -->
-		$contentForm=$('#contentForm');//表单
-		$validateMsg=$('#validateMsg');
 		$contentForm.validate({
 			ignore: [],
 			errorClass : 'is-error',
@@ -196,32 +197,6 @@
 				title : '标题长度为1-255个字符',
 				sortID:'排序为整数'
 			}
-		});
-		
-		$btnSave=$('#btnSave');
-		$btnSave.click(function(){
-			$btnSave.attr('disabled',true);
-			if ($contentForm.valid()) {
-				$.ajax({
-					data : $contentForm.serialize(),
-					type : "POST",
-					beforeSend : function() {
-					},
-					error : function(request) {
-						var data={'info':request.responseText};
-						TipShow2(data);
-						$btnSave.attr('disabled',false);
-					},
-					success : function(data) {
-						TipShow2(data);
-						$btnSave.attr('disabled',false);
-					}
-				});
-			}
-			else{
-				$btnSave.attr('disabled',false);
-			}
-			return false;
 		});
 	});
 	</script>

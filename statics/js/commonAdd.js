@@ -12,6 +12,7 @@ $msgModalBody=$('#msgModalBody');
 $msgModal=$('#msgModal');
 $sucMsgModalBody=$('#sucMsgModalBody');
 $sucMsgModal=$('#sucMsgModal');
+//新建页面提示框
 function TipShow(data,isRefresh) {
 	if(data.status>=0){
 		if(data.status==1){
@@ -37,6 +38,7 @@ function TipShow(data,isRefresh) {
 	}
 }
 
+//修改页面提示框
 function TipShow2(data) {
 	if(data.status>=0){
 		$msgModalBody.text(data.info);
@@ -52,6 +54,11 @@ function TipShow2(data) {
 	}
 }
 
+var TipS;//当前使用的提示框
+function TipSet(fuc){
+	TipS=fuc;
+}
+
 $(function () {
     NavInit();
     UIInit();
@@ -64,5 +71,49 @@ $(function () {
 		checkboxClass: 'icheckbox_square-green',
 		radioClass: 'iradio_square-green',
 		increaseArea: '20%' // optional
+	});
+	
+	<!-- 验证初始化 -->
+	$contentForm=$('#contentForm');//表单
+	$validateMsg=$('#validateMsg');
+	
+	$btnSave=$('#btnSave');//保存按钮
+	$loading=$('.loading');//加载动画
+	//加载中
+	function Loading(){
+		$btnSave.attr('disabled',true);
+		$loading.show();
+	}
+	
+	//停止加载
+	function LoadingStop(){
+		$btnSave.attr('disabled',false);
+		$loading.hide();
+	}
+	
+	//新建或保存
+	$btnSave.click(function(){
+		Loading();
+		if ($contentForm.valid()) {
+			$contentForm.ajaxSubmit({
+                type:'POST',
+                dataType:'json',
+                beforeSend: function() {	                    
+                },
+                success: function(data) {
+                	TipS(data);
+                	LoadingStop();
+                },
+                error : function(request) {
+					var data={'info':request.responseText};
+					TipS(data);
+					LoadingStop();
+				},
+            });				
+		}
+		else{
+			LoadingStop();
+		}
+		return false;
 	});
 });

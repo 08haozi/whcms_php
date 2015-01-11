@@ -65,6 +65,7 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="rightContent">
                     <div id="mainTop">
                         <h4 id="contentTitle">
+                        	<span class="glyphicon glyphicon-plus"></span>
                             新建文章
                         </h4>
                         
@@ -158,6 +159,7 @@
                         
 	<div id="divControl">
 		<button type="submit" class="btn btn-success btn-lg" id="btnSave">保 存</button>
+		<img src="/statics/img/loading.gif" alt="加载中..." class="loading"/>
 		<span id="validateMsg" class="is-error"></span>
 	</div>
 
@@ -223,13 +225,11 @@
 	$(function(){ 
 		NavTabsSelect(1);
 		LeftMenuSelect(1,1);
+		TipSet(TipShow);
 		 
 		<!-- 实例化编辑器 -->
 		var ue = UE.getEditor('container');
 		
-		<!-- 验证初始化 -->
-		$contentForm=$('#contentForm');//表单
-		$validateMsg=$('#validateMsg');
 		$contentForm.validate({
 			ignore: [],
 			errorClass : 'is-error',
@@ -260,35 +260,6 @@
 				outerLink : '网址长度为1-255个字符',
 				sortID:'排序为整数'
 			}
-		});
-		
-		$btnSave=$('#btnSave');
-		$btnSave.click(function(){
-			$btnSave.attr('disabled',true);
-			if ($contentForm.valid()) {
-				$contentForm.ajaxSubmit({
-	                //定义返回JSON数据，还包括xml和script格式
-	                type:'POST',
-	                dataType:'json',
-	                url:'/Admin/Article/add',
-	                beforeSend: function() {	                    
-	                },
-	                success: function(data) {
-	                	TipShow(data);
-						$btnSave.attr('disabled',false);
-	                },
-	                error : function(request) {
-						var data={'info':request.responseText};
-						TipShow(data);
-						$btnSave.attr('disabled',false);
-					},
-	            });
-				
-			}
-			else{
-				$btnSave.attr('disabled',false);
-			}
-			return false;
 		});
 	});
 	</script>

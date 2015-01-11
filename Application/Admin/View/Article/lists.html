@@ -35,7 +35,6 @@
 <block name="content-thead">
 	<tr id="headerMain">
 		<th></th>
-		<th>ID</th>
 		<th>标题</th>
 		<th>分类</th>
 		<th>摘要</th>
@@ -47,8 +46,15 @@
 	<foreach name="result" item="item" key="i">
 		<tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
-			<td>{$item.id}</td>
-			<td><a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a></td>
+			<td>
+				<a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a>
+				<if condition="strlen($item['imgLink']) gt 0">
+					<a href="{$item.imgLink}" target="_blank"> <span class="glyphicon glyphicon-picture"></span></a>
+				</if>
+				<if condition="strlen($item['outerLink']) gt 0">
+					<a href="{$item.outerLink}" target="_blank"> <span class="glyphicon glyphicon-link"></span></a>
+				</if>
+			</td>
 			<td>{:$categoryArray[$item['categoryID']]}</td>
 			<td>{$item.summary}</td>
 			<td>{$item.createtime}</td>
