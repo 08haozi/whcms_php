@@ -217,24 +217,23 @@ class ArticleController extends AdminBaseController
         $end = I('get.endTime'); // 结束时间
         $title = I('get.title'); // 标题
         if (! empty($categoryID) && $categoryID !== '0') {
-            $where['categoryID'] = $categoryID;
-            $pageLink .= '/categoryID/' . $categoryID;
+            $where2['id']=$categoryID;
+            $category=D('ArticleCategory')->where($where2)->find();
+            if(false!==$category){
+                $where['categoryID'] = array('in',substr($category['classList'], 1,-1));
+                $pageLink .= '/categoryID/' . $categoryID;
+            }
         }
         if (! empty($begin) && ! empty($end)) {
-            $where['createtime'] = array('between',$begin . ' 00:00:00,' . $end . ' 23:59:59'
-            );
+            $where['createtime'] = array('between',$begin . ' 00:00:00,' . $end . ' 23:59:59');
             $pageLink .= '/txbBegin/' . $begin . '/txbEnd/' . $end;
-        } else 
-            if (! empty($begin)) {
-                $where['createtime'] = array('egt',$begin . ' 00:00:00'
-                );
-                $pageLink .= '/txbBegin/' . $begin;
-            } else 
-                if (! empty($end)) {
-                    $where['createtime'] = array('elt',$end . ' 23:59:59'
-                    );
-                    $pageLink .= '/txbEnd/' . $end;
-                }
+        } else if (! empty($begin)) {
+            $where['createtime'] = array('egt',$begin . ' 00:00:00');
+            $pageLink .= '/txbBegin/' . $begin;
+        } else if (! empty($end)) {
+            $where['createtime'] = array('elt',$end . ' 23:59:59');
+            $pageLink .= '/txbEnd/' . $end;
+        }
         if (! empty($title)) {
             $where['title'] = array('like','%' . $title . '%'
             );

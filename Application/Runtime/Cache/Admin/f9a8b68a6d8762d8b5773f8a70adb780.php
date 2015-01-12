@@ -26,37 +26,33 @@
         <link href="/statics/iCheck/skins/flat/green.css" rel="stylesheet">
     </head>
     <body>
-        <nav id="navBar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">后台管理</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">桌面</a>
-                        </li>
-                        <li>
-                            <a href="#">设置</a>
-                        </li>
-                        <li>
-                            <a href="#">帮助</a>
-                        </li>
-                        <li>
-                            <a href="/admin/login/doLoginOut">注销</a>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-right">
-                        <input type="text" class="form-control" placeholder="Search..."></form>
-                </div>
-            </div>
-        </nav>
+		<nav id="navBar" class="navbar navbar-inverse navbar-fixed-top"
+	role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">后台管理</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">桌面</a></li>
+				<li><a href="/" target="_blank">前台</a></li>
+				<li><a href="#">设置</a></li>
+				<li><a href="#">帮助</a></li>
+				<li><a href="/admin/login/doLoginOut">注销</a></li>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="Search...">
+			</form>
+		</div>
+	</div>
+</nav>
         <div class="container-fluid"  id="main">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar" id="leftMenu">
