@@ -91,8 +91,10 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="outerLink" class="col-sm-2 control-label">图片</label>
-		    <?php if(strlen($result['imgLink']) > 0): ?><div class="col-sm-2"><img src="<?php echo ($result["imgLink"]); ?>" class="imgTitle"></div>
-				<div class="col-sm-2"><input type="file" name="imgLink" value="<?php echo ($result["imgLink"]); ?>"></div>
+		    <?php if(strlen($result['imgLink']) > 0): ?><div class="col-sm-4">
+					<img src="<?php echo ($result["imgLink"]); ?>" class="imgTitle">
+					<input type="file" name="imgLink" value="<?php echo ($result["imgLink"]); ?>">
+				</div>
 			<?php else: ?>
 				<div class="col-sm-4"><input type="file" name="imgLink"></div><?php endif; ?> 
 		  </div>
@@ -146,7 +148,7 @@
 		    <label class="col-sm-2 control-label">内容</label>
 		    <div class="col-sm-8">
 		      <script id="container" name="contents" type="text/plain">
-				<?php echo (htmlspecialchars_decode($result["contents"])); ?>
+				<?php echo ($result["contents"]); ?>
     		  </script>
 		    </div>
 		</div>	  	

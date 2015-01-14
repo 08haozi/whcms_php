@@ -1,0 +1,128 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="互联0768 潮州本地的网络信息服务  潮州网站建设 网页设计 网站设计制作 潮州软件制作 手机APP开发">
+		<meta name="description" content="互联0768工作室专注于潮州地区网站建设，网站制作服务，承接各类网站设计制作，网页设计制作，网络大型项目，手机APP开发，个性化软件定制及系统二次开发。">
+        <meta name="author" content="">
+        <meta name="renderer" content="webkit">
+        <!--<link rel="icon" href="../../favicon.ico">-->
+
+        <title>互联0768</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/statics/css/index.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="/statics/bootstrap/js/html5shiv.min.js"></script>
+        <script src="/statics/bootstrap/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid" id="header">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">互联0768</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+	                <div class="row hidden-sm hidden-md hidden-lg">
+	                	<div class="col-md-10 col-md-offset-1">
+	                    <ul class="nav navbar-nav">
+	                        <if condition="$categoryID eq 0">
+	                    		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
+	                    	<else /> 
+								<li role="presentation"><a href="/">全部</a></li>
+							</if>
+	                    	<foreach name="categoryArray" item="item" key="i">
+		            			<if condition="$item['id'] eq $categoryID">
+		                    		<li role="presentation" class="active"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title} <span class="badge badge-success">{$count}</span></a></li>
+		                    	<else /> 
+									<li role="presentation"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title}</a></li>
+								</if>
+	            			</foreach>
+	                    </ul>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="searchBar">
+                <div class="navbar-collapse collapse">
+	                <div class="row">
+	                	<div class="col-md-10 col-md-offset-1">
+	                    <ul class="nav navbar-nav">
+	                    	<if condition="$categoryID eq 0">
+	                    		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
+	                    	<else /> 
+								<li role="presentation"><a href="/">全部</a></li>
+							</if>
+	                    	<foreach name="categoryArray" item="item" key="i">
+		            			<if condition="$item['id'] eq $categoryID">
+		                    		<li role="presentation" class="active"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title} <span class="badge badge-success">{$count}</span></a></li>
+		                    	<else /> 
+									<li role="presentation"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title}</a></li>
+								</if>
+	            			</foreach>
+	                    </ul>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+        </nav>
+        <div class="h60 hidden-xs"></div>
+        <block name="content"></block>
+        <div class="h50"></div>
+        <div id="bottom">
+			© 2014 net0768.com 版权所有 -
+			<a href="http://www.miibeian.gov.cn/">粤ICP备14047948号-2</a>
+		</div>
+        <span class="ribbon ribbon-bottom-right ribbon-red"><a href="http://www.miibeian.gov.cn/">联系我们</a></span>
+        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+						</button>
+						<h2 class="modal-title" id="myModalLabel">
+							<span class="label label-success">联系我们</span></h2>
+					</div>
+					<div class="modal-body">
+						<ul class="contact">
+							<li class="contactPhone">
+							 <span class="contactIcon"></span>
+							 <span class="text">13435588552</span>
+							</li>
+							<li class="contactQQ">
+							 <span class="contactIcon"></span>
+							 <span class="text">648820957</span>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cnzz">
+			<script src="http://s95.cnzz.com/stat.php?id=1254077084&web_id=1254077084" language="JavaScript"></script>
+		</div>
+        <script src="/statics/js/jquery.min.js"></script>
+        <script src="/statics/js/jquery.lazyload.min.js"></script>
+        <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/statics/bootstrap/js/docs.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="/statics/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <block name="JS"></block>
+    </body>
+</html>

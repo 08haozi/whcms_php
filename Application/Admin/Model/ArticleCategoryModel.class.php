@@ -298,6 +298,10 @@ class ArticleCategoryModel extends Model
         return true;
     }
     
+    /**
+     * 获取分类的键值对（id->title）
+     * @return array id->title
+     */
     function getArray(){        
        $result=$this->where('1=1')->select();
        $array=array();
@@ -305,6 +309,16 @@ class ArticleCategoryModel extends Model
            $array[$item['id']]=$item['title'];
        }
        return $array;
+    }
+    
+    /**
+     * 根据分类ID获取分类标题
+     * @param int $id 分类ID
+     * @return string 分类标题
+     */
+    function getTitle($id){
+        $where['id']=$id;
+        return $this->where($where)->getField('title');
     }
 }
 

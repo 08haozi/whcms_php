@@ -1,0 +1,39 @@
+<extend name="./Application/Home/View/Basic/index.html" />
+<block name="content">
+	<div class="container-fluid"  id="main" class="look">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-1 lookContent">
+				<h1 class="title">{$result.title}</h1>
+				<h2 class="subTitle">类别：{$categoryTitle}</h2>
+				<div>{$result.contents}</div>
+			</div>
+			<div class="col-md-2 lookList">
+				<h2>同类推荐</h2>
+					<ul id="list">
+						<foreach name="list" item="item" key="i">
+							<li class="listItem">
+								<a href="/Home/Index/look/id/{$item.id}">
+									<img class="img" src="/statics/img/zw.gif" alt="{$item.title}" data-original="{$item.imgLink}"/>
+								</a>
+								<p class="info">{$item.title}</p>
+							</li>
+						</foreach>
+					</ul>
+			</div>
+		</div>
+	</div>
+</block>
+<block name="JS">
+	<script type="text/javascript">
+		$(function(){
+	    	$('.img').lazyload({
+	        	effect: 'fadeIn',
+	        	threshold : 200
+	    	});   
+	        	
+	        $('.ribbon').click(function(){
+	        	$('#contactModal').modal('show');
+	        });
+		});
+	</script>
+</block>

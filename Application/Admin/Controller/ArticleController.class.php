@@ -112,6 +112,7 @@ class ArticleController extends AdminBaseController
     {
         if (IS_POST) {
             $this->model->create();
+            $this->model->contents=html_entity_decode(stripslashes($this->model->contents));
             $this->model->creatorID = $_SESSION["ManagerID"];
             $this->model->auditorID = $_SESSION["ManagerID"];
             $this->model->isDel = 0;
@@ -173,6 +174,7 @@ class ArticleController extends AdminBaseController
         
         if (IS_POST) {
             $this->model->create();
+            $this->model->contents=html_entity_decode(stripslashes($this->model->contents));
             
             // 保存标题图片
             if (count($_FILES)>0){

@@ -27,8 +27,10 @@
 		  <div class="form-group">
 		    <label for="outerLink" class="col-sm-2 control-label">图片</label>
 		    <if condition="strlen($result['imgLink']) gt 0">
-				<div class="col-sm-2"><img src="{$result.imgLink}" class="imgTitle"></div>
-				<div class="col-sm-2"><input type="file" name="imgLink" value="{$result.imgLink}"></div>
+				<div class="col-sm-4">
+					<img src="{$result.imgLink}" class="imgTitle">
+					<input type="file" name="imgLink" value="{$result.imgLink}">
+				</div>
 			<else />
 				<div class="col-sm-4"><input type="file" name="imgLink"></div>
 			</if> 
@@ -83,7 +85,7 @@
 		    <label class="col-sm-2 control-label">内容</label>
 		    <div class="col-sm-8">
 		      <script id="container" name="contents" type="text/plain">
-				{$result.contents|htmlspecialchars_decode}
+				{$result.contents}
     		  </script>
 		    </div>
 		</div>	  	
