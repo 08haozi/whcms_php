@@ -1,0 +1,192 @@
+@CHARSET "UTF-8";
+html, body, main, header, footer, section, aside, article, nav, time, div, span, em, strong, i, b, small, code, h1, h2, h3, h4, h5, p, pre, ul, ol, li, dl, dt, dd, table, thead, tbody, tfoot, tr, th, td form, fieldset, input, select, textarea, button, legend, label, img, a, progress, meter {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: inherit;
+    font-size: 1em;
+    font-style: normal;
+    line-height: 1.3em;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    vertical-align: baseline;
+    list-style:none;
+}
+*::-moz-placeholder {
+    color: inherit;
+    opacity: 0.66;
+}
+document,body{
+	background: url("/statics/img/bg-dark-grain.png") repeat scroll left top #171717;
+}
+#header{ 
+	background-color: #212427;
+    background-image: linear-gradient(to bottom, #292c2f 0px, #191c1f 100%);
+    box-shadow: 0 0 0 1px rgba(31, 31, 31, 0.66) inset, 0 0 10px rgba(0, 0, 0, 0.75), 0 0 10px rgba(0, 0, 0, 0.75);
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+}
+#searchBar{
+	margin: 4px 0 0 0;
+	background-color: #262729;
+    background-image: linear-gradient(to bottom, #292c2f 0px, #222 100%);
+    box-shadow: 0 0 0 1px #222, 0 5px 5px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+}
+.badge{
+	color:#fff;
+	background-color:#5cb85c;
+}
+#main{
+	margin-top:130px;
+	text-align:center;
+}
+#list{
+	  display:inline-block;
+}
+.listItem{
+	display:inline-block;
+	position:relative;
+}
+.listItem a{
+	display:inline-block;
+	margin:10px;
+	width:304px;
+	height:204px;
+}
+.img{
+	border:2px solid rgba(255, 225, 64, 0.66);
+	width:300px;
+	height:200px;
+}
+.info{
+	text-align:center;
+	background-color: rgba(0, 0, 0, 0.1);
+    bottom: 14px;
+    box-shadow: 0 -2em 2em -2em #000 inset;
+    color: #fff;
+    height: 0;
+    left: 0;
+    line-height: 2em;
+    opacity: 0;
+    overflow: hidden;
+    margin:0 12px;
+    position: absolute;
+    right: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+    transition-duration: 0.25s;
+    transition-property: visibility, opacity, height;
+    visibility: hidden;
+    z-index: 120;
+}
+.listItem:hover .img{
+	box-shadow:0 0 15px #123aa9;
+	border:2px solid #123aa9;
+}
+.listItem:hover .info{
+	height: 2em;
+    opacity: 1;
+    visibility: visible;
+}
+#bottom{
+	 background: url("/statics/img/bg-dark-grain.png") repeat scroll left top #171717;
+	 text-align:center;
+	 position:fixed;
+	 bottom:0;
+	 padding:5px 0;
+	 width:100%;
+	 color:#bbb;
+	 font-size:15px;
+	 text-shadow:0 1px 2px #fff; 
+	 z-index:121;
+}
+.ribbon:before {
+    border: 1px dashed rgba(0, 0, 0, 0.45);
+    bottom: 0.2em;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0.2em;
+}
+.ribbon-red {
+    background-color: red;
+    background-image: linear-gradient(to bottom, #892329 0px, #7d151f 100%);
+    color: #300;
+    text-shadow: 0.05em 0.05em 0 #b44;
+}
+.ribbon-bottom-left, .ribbon-bottom-right {
+    bottom: 1em;
+}
+.ribbon-top-right, .ribbon-bottom-right {
+    right: 1em;
+}
+.ribbon-top-left, .ribbon-bottom-right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+}
+.ribbon {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-family: "Georgia",serif;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 2.2em;
+    margin: 0 -500px;
+    padding: 0 500px;
+    position: fixed;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    z-index: 8000;
+    cursor:pointer;
+}
+.ribbon:hover a{
+	color:#fff;
+}
+#contactModal .modal-body{
+	text-align:center;
+}
+.contact{
+	display:inline-block;
+}
+.contact li{
+	font-size:40px;
+	text-align:left;
+	margin-bottom:10px;
+}
+.contactIcon{
+	display:inline-block; 
+	width:45px; 
+	height:48px;  
+	vertical-align:middle;		
+}
+.contactPhone .contactIcon{
+	background:url(/statics/img/phone.png) top left no-repeat; 	
+}
+.contactPhone .text{
+	color:#ff7a7a;
+	vertical-align:middle;
+}
+.contactQQ .contactIcon{
+	background:url(/statics/img/qq.png) top left no-repeat; 	
+}
+.contactQQ .text{
+	color:#6fabde;
+	vertical-align:middle;
+}
+.h50{
+	height:50px;
+}
+.cnzz{
+	display:none;
+}
