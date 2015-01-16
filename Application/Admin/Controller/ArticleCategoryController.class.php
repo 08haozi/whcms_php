@@ -46,20 +46,6 @@ class ArticleCategoryController extends AdminBaseController
     
     
     /**
-     * 回收站
-     */
-    function recycle(){
-        $where['id']=array('in',I('post.ids'));
-        
-        $data['isDel']=1;
-        
-        $this->model
-            ->where($where)
-            ->save($data);
-        $this->success('移至回收站成功，页面自动刷新！');
-    }
-    
-    /**
      * 新建
      */
     function add(){

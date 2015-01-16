@@ -15,45 +15,6 @@ class IndexController extends Controller {
         $this->_search();
     }
     
-    function look(){
-        $id=I('get.id');
-        if(empty($id)){
-            return;
-        }
-        
-        $model=D('Admin/Article');
-        $where['isDel']=0;
-        $where['id']=$id;
-        
-        $result=$model->where($where)//文章信息
-                       ->find();
-        if(false===$result){
-            return;
-        }
-        
-        $where2['isDel']=0;
-        $where2['id']=array('neq',$id);
-        $where2['categoryID']=$result['categoryID'];
-        $list = $model->where($where2)
-                      ->page(1, 5)
-                      ->order('sortID asc,createTime desc')
-                      ->select();
-
-        $categoryModel=D('Admin/ArticleCategory');
-
-        $categoryTitle=$categoryModel->getTitle($result['categoryID']);
-        
-        $categoryArray = $categoryModel->getList(0);
-        
-        $this->assign('result', $result)
-             ->assign('list', $list)
-             ->assign('categoryTitle', $categoryTitle)
-             ->assign('categoryArray', $categoryArray)
-             ->assign('categoryID',-1);
-             
-        $this->display('look');
-    }
-    
     /**
      * 搜索
      */
@@ -76,10 +37,18 @@ class IndexController extends Controller {
         
         $categoryArray = D('Admin/ArticleCategory')->getList(0);
         
+        //网站信息
+        $sites=json_decode(D('Admin/KeyValue')->getValue('sitesInfo'),true);
+        
+        //SEO信息
+        $seo=D('Admin/Seo')->getM('index',$sites['title']);
+        
         $this->assign('categoryID', $categoryID)
              ->assign('count', $count)
              ->assign('result', $result)
-             ->assign('categoryArray', $categoryArray);
+             ->assign('categoryArray', $categoryArray)
+             ->assign('sites',$sites)
+             ->assign('seo',$seo);
         
         $this->display('index');
     }

@@ -12,7 +12,7 @@ use Think\Model;
 class ArticleCategoryModel extends Model
 {
 
-    protected $tableName = 'article_category';
+    protected $tableName = 'cms_article_category';
 
     /**
      * 获取分类列表

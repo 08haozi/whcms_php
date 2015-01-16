@@ -17,7 +17,6 @@
 		<th></th>
 		<th>ID</th>
 		<th>类别名称</th>
-		<th>list</th>
 	</tr>
 </block>
 <block name="content-tbody"> 
@@ -26,7 +25,6 @@
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
 			<td>{$item.id}</td>
 			<td>{$item.classLayer} <a href="/Admin/ArticleCategory/edit/id/{$item.id}">{$item.title}</a></td>
-			<td>{$item.classList}</td>
 		</tr>
 	</foreach> 
 </block>

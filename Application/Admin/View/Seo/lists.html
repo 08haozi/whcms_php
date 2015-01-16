@@ -1,0 +1,41 @@
+<extend name="./Application/Admin/View/Basic/lists.html" />
+<block name="title">后台管理-页面SEO列表</block>
+<block name="main-title">页面SEO列表 </block>
+<block name="content-tabs">
+<li role="presentation" class="active">
+	<a href="/Admin/ArticleCategory/lists">全部（{$count}）</a></li>
+</block>
+<block name="content-control">
+</block>
+<block name="content-search">
+</block>
+<block name="content-thead">
+	<tr id="headerMain">
+		<th>页面名称</th>
+		<th>SEO标题</th>
+		<th>SEO关键字</th>
+		<th>SEO描述</th>
+	</tr>
+</block>
+<block name="content-tbody"> 
+	<foreach name="result" item="item" key="i">
+		<tr>
+			<td><a href="/Admin/Seo/edit/id/{$item.id}">{$item.name}</a></td>
+			<td>{$item.title}</td>
+			<td>{$item.keywords}</td>
+			<td>{$item.description}</td>
+		</tr>
+	</foreach> 
+</block>
+<block name="content-bottom">
+</block>
+<block name="tip">
+</block>
+<block name="js">
+	<script type="text/javascript">
+		$(function(){ 
+			NavTabsSelect(2);
+			LeftMenuSelect(2,1); 
+		}); 
+	</script>
+</block>

@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="互联0768 潮州本地的网络信息服务  潮州网站建设 网页设计 网站设计制作 潮州软件制作 手机APP开发">
-		<meta name="description" content="互联0768工作室专注于潮州地区网站建设，网站制作服务，承接各类网站设计制作，网页设计制作，网络大型项目，手机APP开发，个性化软件定制及系统二次开发。">
+
+        <meta name="keywords" content="{$seo.keywords}">
+		<meta name="description" content="{$seo.description}">
         <meta name="author" content="">
         <meta name="renderer" content="webkit">
         <!--<link rel="icon" href="../../favicon.ico">-->
 
-        <title>互联0768</title>
+        <title>{$seo.title}</title>
 
         <!-- Bootstrap core CSS -->
         <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -82,8 +83,8 @@
         <block name="content"></block>
         <div class="h50"></div>
         <div id="bottom">
-			© 2014 net0768.com 版权所有 -
-			<a href="http://www.miibeian.gov.cn/">粤ICP备14047948号-2</a>
+			{$sites.copyright}
+			<a href="http://www.miibeian.gov.cn/">{$sites.no}</a>
 		</div>
         <span class="ribbon ribbon-bottom-right ribbon-red"><a href="http://www.miibeian.gov.cn/">联系我们</a></span>
         <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
@@ -101,11 +102,11 @@
 						<ul class="contact">
 							<li class="contactPhone">
 							 <span class="contactIcon"></span>
-							 <span class="text">13435588552</span>
+							 <span class="text">{$sites.phone}</span>
 							</li>
 							<li class="contactQQ">
 							 <span class="contactIcon"></span>
-							 <span class="text">648820957</span>
+							 <span class="text">{$sites.qq}</span>
 							</li>
 						</ul>
 					</div>
@@ -114,8 +115,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="cnzz">
-			<script src="http://s95.cnzz.com/stat.php?id=1254077084&web_id=1254077084" language="JavaScript"></script>
+		<div class="count">
+			{$sites.count}
 		</div>
         <script src="/statics/js/jquery.min.js"></script>
         <script src="/statics/js/jquery.lazyload.min.js"></script>

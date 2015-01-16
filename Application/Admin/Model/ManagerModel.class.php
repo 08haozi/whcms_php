@@ -5,7 +5,7 @@ namespace Admin\Model;
 use Think\Model;
 
 class ManagerModel extends Model {
-    protected $tableName = 'manager';
+    protected $tableName = 'cms_manager';
     
     /**
      * 登陆验证

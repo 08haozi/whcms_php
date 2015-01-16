@@ -1,0 +1,137 @@
+<extend name="./Application/Admin/View/Basic/edit.html" />
+<block name="title">后台管理-网站信息</block>
+<block name="main-title">网站信息</block>
+<block name="contentTab">
+	<ul class="nav nav-tabs" role="tablist">
+	  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">基本信息</a></li>
+	  <li role="presentation"><a href="#contact" role="tab" data-toggle="tab">联系信息</a></li>
+	</ul>
+</block>
+<block name="mainMiddle">
+	<!-- Tab panes -->
+	<form class="tab-content form-horizontal" role="form" id="contentForm">
+	  <div role="tabpanel" class="tab-pane active" id="home">
+	  	  <div class="form-group"></div>
+		  <div class="form-group">
+		    <label for="title" class="col-sm-2 control-label">网站名称</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="title" value="{$sites.title}" placeholder="长度不超过50个字符">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="no" class="col-sm-2 control-label">备案信息</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="no" value="{$sites.no}" placeholder="长度不超过50个字符">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="count" class="col-sm-2 control-label">统计代码</label>
+		    <div class="col-sm-4">
+		      <textarea name="count" placeholder="长度不超过255个字符" rows="3" class="form-control">{$sites.count}</textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="copyright" class="col-sm-2 control-label">版权信息</label>
+		    <div class="col-sm-4">
+		      <textarea name="copyright" placeholder="长度不超过50个字符" rows="3" class="form-control">{$sites.copyright}</textarea>
+		    </div>
+		  </div>
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="contact">
+	  	  <div class="form-group"></div>
+		  <div class="form-group">
+		    <label for="phone" class="col-sm-2 control-label">手机</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="phone" value="{$sites.phone}" placeholder="请输入正确手机号码">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="email" class="col-sm-2 control-label">邮箱</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="email" value="{$sites.email}" placeholder="请输入正确邮箱地址">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="qq" class="col-sm-2 control-label">QQ</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" name="qq" value="{$sites.qq}" placeholder="请输入正确QQ号码">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="address" class="col-sm-2 control-label">地址</label>
+		    <div class="col-sm-4">
+		      <textarea name="address" placeholder="不超过255个字符" rows="3" class="form-control">{$sites.address}</textarea>
+		    </div>
+		  </div>
+	  </div>
+	</form>
+</block>
+<block name="content-bottom">
+	<div id="divControl">
+		<button type="submit" class="btn btn-success btn-lg" id="btnSave">保 存</button>
+		<span id="validateMsg" class="is-error"></span>
+	</div>
+</block>
+
+<block name="js">
+	<script type="text/javascript" src="/statics/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/statics/ueditor143/ueditor.config.js"></script>
+    <script type="text/javascript" src="/statics/ueditor143/ueditor.all.js"></script>   
+	<script type="text/javascript">
+	$(function(){ 
+		NavTabsSelect(2);
+		LeftMenuSelect(2,0);
+		TipSet(TipShow3);
+
+		$contentForm.validate({
+			ignore: [],
+			errorClass : 'is-error',
+			showErrors : function(errorMap, errorList) {
+				if (this.numberOfInvalids() > 0) {
+					$validateMsg.html(this.numberOfInvalids() + '处信息填写有误！')
+							.show();
+					this.defaultShowErrors();
+				} else {
+					$validateMsg.hide();
+				}
+			},
+			rules : {
+				title:{
+					maxlength:50
+				},
+				no:{
+					maxlength:50
+				},
+				count:{
+					maxlength:255
+				},
+				copyright:{
+					maxlength:50
+				},
+				phone:{
+					isPhone:true
+				},
+				email :{
+				 	email:true
+				},
+				qq:{
+					isQq:true
+				},
+				address:{
+					maxlength:255
+				}
+			},
+			messages : {
+				title:'网站名称长度不超过50个字符',
+				no:'备案信息长度不超过50个字符',
+				count:'统计代码长度不超过50个字符',
+				copyright:'版权信息长度不超过255个字符',
+				phone:'请输入正确手机号码',
+				email : '请输入正确邮箱地址',
+				qq:'请输入正确QQ号码',
+				address:'地址长度不超过255个字符'
+			}
+		});
+	});
+	</script>
+</block>	

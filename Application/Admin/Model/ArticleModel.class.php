@@ -9,5 +9,5 @@ use Think\Model;
  *
  */
 class ArticleModel extends Model {
-    protected $tableName = 'article';
+    protected $tableName = 'cms_article';
 }

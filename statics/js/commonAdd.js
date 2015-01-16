@@ -38,7 +38,7 @@ function TipShow(data,isRefresh) {
 	}
 }
 
-//修改页面提示框
+//修改页面提示框，修改后返回上一页
 function TipShow2(data) {
 	if(data.status>=0){
 		$msgModalBody.text(data.info);
@@ -49,7 +49,33 @@ function TipShow2(data) {
 		}
 	}
 	else{
-		$msgModalBody.text(data);
+		if(data.info){
+			$msgModalBody.text(data.info);
+		}
+		else{
+			$msgModalBody.text(data);
+		}	
+		$msgModal.modal('show');
+	}
+}
+
+//修改页面提示框，修改后不返回
+function TipShow3(data) {
+	if(data.status>=0){
+		$msgModalBody.text(data.info);
+		$msgModal.modal('show');
+		if(data.status==1){
+			window.setTimeout(function(){window.location.reload();},500);
+			return;
+		}
+	}
+	else{
+		if(data.info){
+			$msgModalBody.text(data.info);
+		}
+		else{
+			$msgModalBody.text(data);
+		}		
 		$msgModal.modal('show');
 	}
 }

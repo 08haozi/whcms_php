@@ -190,7 +190,7 @@ class ArticleController extends AdminBaseController
                 $this->model->imgLink=$result['imgLink'];
             }
             
-            if ($this->model->where('id=' . $result['id'])->save() === false) {
+            if (false===$this->model->where('id=' . $result['id'])->save()) {
                 $this->error('操作失败！', $SERVER['HTTP_REFERER']);
             }
             $this->success('修改成功！', $SERVER['HTTP_REFERER']);

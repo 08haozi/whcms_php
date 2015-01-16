@@ -11,6 +11,7 @@ $divControl=$('#divControl');
 var navList = [
     ['桌面', '/Admin/index'],
     ['文章', '#'],
+    ['设置', '#'],
     ['系统', '#'],
     ['帮助','#']
 ];
@@ -26,6 +27,15 @@ var navChildrenList = [
          ['分类列表', '/Admin/ArticleCategory/lists','glyphicon glyphicon-align-justify'], 
          ['新建分类', '/Admin/ArticleCategory/Add','glyphicon glyphicon-plus']
         ]
+    ],
+    [
+	     ['网站设置', 
+	      ['网站信息', '/Admin/Set/sites','glyphicon glyphicon-globe'],
+	      ['页面SEO', '/Admin/Seo/lists','glyphicon glyphicon-search']
+	     ],
+	     ['个人信息', 
+	      ['修改密码', '/Admin/Set/chgPassword','glyphicon glyphicon-asterisk']
+	     ]
     ],
     null,
     null
