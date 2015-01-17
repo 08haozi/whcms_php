@@ -60,7 +60,7 @@
 			{$sites.copyright}
 			<a href="http://www.miibeian.gov.cn/" target="_blank">{$sites.no}</a>
 		</div>
-        <span class="ribbon ribbon-bottom-right ribbon-red"><a href="http://www.miibeian.gov.cn/">联系我们</a></span>
+        <span class="ribbon ribbon-bottom-right ribbon-red"><a>联系我们</a></span>
         <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -105,7 +105,7 @@
 						<div class="container-fluid">
 					    	<div class="row">
 					    		<div class="col-xs-12 col-sm-6 col-md-3">
-					            <div class="img-circle btn-primary businessItem">
+					            <div id="businessItem" class="img-circle btn-primary businessItem">
 					              	网站建设</div>
 					            </div>
 					            <div class="col-xs-12 col-sm-6 col-md-3">
@@ -135,6 +135,8 @@
         <script src="/statics/bootstrap/js/docs.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="/statics/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="/statics/js/TweenMax.min.js"></script>
+		<script src="/statics/js/jquery.gsap.min.js"></script>
         <block name="JS"></block>
     </body>
 </html>

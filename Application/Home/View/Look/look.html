@@ -26,19 +26,33 @@
 <block name="JS">
 	<script type="text/javascript">
 		$(function(){
+			//图片延迟
 	    	$('.img').lazyload({
 	        	effect: 'fadeIn',
 	        	threshold : 200
 	    	});   
 	        	
-	    	$('.ribbon').click(function(){
+	    	//联系我们
+	        $('.ribbon').click(function(){
 	        	$('#contactModal').modal('show');
 	        });
+	        
+	        //联系我们
 	        $('.navContact').click(function(){
 	        	$('#contactModal').modal('show');
 	        });
+	        
+	        //业务范围
 	        $('.navBusiness').click(function(){
 	        	$('#businessModal').modal('show');
+	        });
+	        
+	        //logo动画
+	        $(".navbar-brand").hover(function(){
+	        	$(this).animate({'transform':'rotate(-20deg)'} , 500);
+	        },
+	        function(){
+	        	$(this).animate({'transform':'rotate(360deg)'} , 500);
 	        });
 		});
 	</script>
