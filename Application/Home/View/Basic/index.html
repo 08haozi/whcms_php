@@ -38,20 +38,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
 	                <div class="row hidden-sm hidden-md hidden-lg">
 	                	<div class="col-md-10 col-md-offset-1">
-	                    <ul class="nav navbar-nav">
-	                        <if condition="$categoryID eq 0">
-	                    		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
-	                    	<else /> 
-								<li role="presentation"><a href="/">全部</a></li>
-							</if>
-	                    	<foreach name="categoryArray" item="item" key="i">
-		            			<if condition="$item['id'] eq $categoryID">
-		                    		<li role="presentation" class="active"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title} <span class="badge badge-success">{$count}</span></a></li>
-		                    	<else /> 
-									<li role="presentation"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title}</a></li>
-								</if>
-	            			</foreach>
-	                    </ul>
+	                    	<include file="Basic/navBar" />
 	                    </div>
 	                </div>
                 </div>
@@ -60,20 +47,7 @@
                 <div class="navbar-collapse collapse">
 	                <div class="row">
 	                	<div class="col-md-10 col-md-offset-1">
-	                    <ul class="nav navbar-nav">
-	                    	<if condition="$categoryID eq 0">
-	                    		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
-	                    	<else /> 
-								<li role="presentation"><a href="/">全部</a></li>
-							</if>
-	                    	<foreach name="categoryArray" item="item" key="i">
-		            			<if condition="$item['id'] eq $categoryID">
-		                    		<li role="presentation" class="active"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title} <span class="badge badge-success">{$count}</span></a></li>
-		                    	<else /> 
-									<li role="presentation"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title}</a></li>
-								</if>
-	            			</foreach>
-	                    </ul>
+	                    	<include file="Basic/navBar" />
 	                    </div>
 	                </div>
                 </div>
@@ -84,7 +58,7 @@
         <div class="h50"></div>
         <div id="bottom">
 			{$sites.copyright}
-			<a href="http://www.miibeian.gov.cn/">{$sites.no}</a>
+			<a href="http://www.miibeian.gov.cn/" target="_blank">{$sites.no}</a>
 		</div>
         <span class="ribbon ribbon-bottom-right ribbon-red"><a href="http://www.miibeian.gov.cn/">联系我们</a></span>
         <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
@@ -96,7 +70,7 @@
 							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
 						</button>
 						<h2 class="modal-title" id="myModalLabel">
-							<span class="label label-success">联系我们</span></h2>
+							联系我们</h2>
 					</div>
 					<div class="modal-body">
 						<ul class="contact">
@@ -109,6 +83,43 @@
 							 <span class="text">{$sites.qq}</span>
 							</li>
 						</ul>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 业务范围 -->
+		<div class="modal fade" id="businessModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+						</button>
+						<h2 class="modal-title" id="myModalLabel">
+							业务范围</h2>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+					    	<div class="row">
+					    		<div class="col-xs-12 col-sm-6 col-md-3">
+					            <div class="img-circle btn-primary businessItem">
+					              	网站建设</div>
+					            </div>
+					            <div class="col-xs-12 col-sm-6 col-md-3">
+					            <div class="img-circle btn-success businessItem">
+					              	软件开发</div>
+					            </div><div class="col-xs-12 col-sm-6 col-md-3">
+					            <div class="img-circle btn-warning businessItem">
+					              	安卓APP开发</div>
+					            </div><div class="col-xs-12 col-sm-6 col-md-3">
+					            <div class="img-circle btn-danger businessItem">
+					              	微信开发</div>
+					            </div>
+					       </div>
+				        </div>	
 					</div>
 					<div class="modal-footer">
 					</div>

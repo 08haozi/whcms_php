@@ -1,6 +1,7 @@
 $headerMain = $('#headerMain');
 $headerClone = $('#headerClone');
 function Freezeheader() {
+	$headerClone.css('height',$headerMain.height());
     var thList = $headerMain.children();
     var cloneHtml = '';
     for (i = 0; i < thList.length; i++) {

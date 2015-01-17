@@ -40,6 +40,12 @@ document,body{
 	color:#fff;
 	background-color:#5cb85c;
 }
+.label{
+	font-size:100%;
+}
+.navBusiness,.navContact{
+	cursor:pointer;
+}
 #main{
 	margin-top:70px;
 	text-align:center;
@@ -175,6 +181,16 @@ document,body{
 .contactQQ .text{
 	color:#6fabde;
 	vertical-align:middle;
+}
+.businessItem{
+	color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    height: 120px;
+    line-height: 120px;
+    margin: 0 auto;
+    width: 120px;
+    text-align: center;
 }
 .h50{
 	height:50px;

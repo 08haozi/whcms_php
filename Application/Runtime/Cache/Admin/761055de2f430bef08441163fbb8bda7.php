@@ -197,6 +197,7 @@
         <script src="/statics/iCheck/icheck.js"></script>
         <script src="/statics/js/commonAdd.js"></script>
         <script type="text/javascript" src="/statics/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="/statics/js/jquery.validate.method.js"></script>
 		<script type="text/javascript" src="/statics/bootstrap/js/messages_cn.js"></script>
         
 	<script type="text/javascript" src="/statics/My97DatePicker/WdatePicker.js"></script>

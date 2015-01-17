@@ -1,0 +1,16 @@
+<ul class="nav navbar-nav">
+	<if condition="$categoryID eq 0">
+		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
+	<else /> 
+		<li role="presentation"><a href="/">全部</a></li>
+	</if>
+	<foreach name="categoryArray" item="item" key="i">
+		<if condition="$item['id'] eq $categoryID">
+			<li role="presentation" class="active"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title} <span class="badge badge-success">{$count}</span></a></li>
+		<else /> 
+			<li role="presentation"><a href="/Home/Index/s/categoryID/{$item.id}">{$item.title}</a></li>
+		</if>
+	</foreach>
+	<li role="presentation"><a><span class="glyphicon glyphicon-briefcase label label-info navBusiness">业务范围</span></a></li>
+	<li role="presentation"><a><span class="glyphicon glyphicon-user label label-danger navContact">联系我们</span></a></li>
+</ul>
