@@ -9,7 +9,7 @@
         <meta name="renderer" content="webkit">
         <!--<link rel="icon" href="../../favicon.ico">-->
 
-        <title>后台管理-文章分类列表</title>
+        <title>后台管理-<?php echo ($typeName); ?>分类列表</title>
 
         <!-- Bootstrap core CSS -->
         <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,7 @@
                     <div id="mainTop">
                         <h4 id="contentTitle">
                         	<span class="glyphicon glyphicon-align-justify"></span>
-                            文章分类列表 
+                            <?php echo ($typeName); ?>分类列表 
                         </h4>
                         <ul role="tablist" class="nav nav-tabs" id="contentTabs">
                             
@@ -75,7 +75,7 @@
                                     
 	<button type="button" id="btnSelect" class="btn btn-info btn-sm">全 选</button>
 	<button type="button" class="btn btn-danger btn-sm" id="btnDel">删 除</button>
-	<a class="btn btn-success btn-sm" href="/Admin/ArticleCategory/add">新 建</a>
+	<a class="btn btn-success btn-sm" href="/Admin/ArticleCategory/add/type/<?php echo ($type); ?>">新 建</a>
 
                                 </div>
                                 <div class="col-xs-12 col-md-9">
@@ -98,7 +98,6 @@
                             
 	<tr id="headerMain">
 		<th></th>
-		<th>ID</th>
 		<th>类别名称</th>
 	</tr>
 
@@ -107,7 +106,6 @@
                              
 	<?php if(is_array($result)): foreach($result as $i=>$item): ?><tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="<?php echo ($item["id"]); ?>" /></td>
-			<td><?php echo ($item["id"]); ?></td>
 			<td><?php echo ($item["classLayer"]); ?> <a href="/Admin/ArticleCategory/edit/id/<?php echo ($item["id"]); ?>"><?php echo ($item["title"]); ?></a></td>
 		</tr><?php endforeach; endif; ?> 
 
@@ -175,7 +173,12 @@
 	<script type="text/javascript">
 		$(function(){ 
 			NavTabsSelect(1);
-			LeftMenuSelect(1,3); 
+			if(<?php echo ($type); ?>==1){
+				LeftMenuSelect(1,3); 
+			}
+			else{
+				LeftMenuSelect(1,8);
+			}
 			
 			var delIDs;
 			$('#btnDel').click(function(){

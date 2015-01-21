@@ -13,18 +13,23 @@ class ArticleCategoryModel extends Model
 {
 
     protected $tableName = 'cms_article_category';
+    
+    //分类类别
+    const TypeArticle=1;    //文章
+    const TypeArticleAlbum=2;//图片文章
 
     /**
      * 获取分类列表
      *
      * @param int $parentID
      *            上级ID
+     * @param int $type 分类类别
      * @return array 分类列表
      */
-    function getList($parentID)
+    function getList($parentID,$type)
     {
         $list = array();
-        $this->_getList($list, $parentID);
+        $this->_getList($list, $parentID,$type);
         return $list;
     }
 
@@ -35,11 +40,13 @@ class ArticleCategoryModel extends Model
      *            分类列表
      * @param int $parentID
      *            上级ID
+     * @param int $type 分类类别
      * @return array 分类列表
      */
-    private function _getList(&$list, $parentID)
+    private function _getList(&$list, $parentID,$type)
     {
         $where['parentID'] = $parentID;
+        $where['type'] = $type;
         $result = $this->where($where)
             ->order('sortID asc')
             ->select();
@@ -47,7 +54,7 @@ class ArticleCategoryModel extends Model
             for ($i = 0; $i < count($result); $i ++) {
                 $result[$i]['classLayer'] = $this->getPrefix($result[$i]['classLayer']);
                 array_push($list, $result[$i]);
-                $this->_getList($list, $result[$i]['id']);
+                $this->_getList($list, $result[$i]['id'],$type);
             }
         }
     }
@@ -55,14 +62,14 @@ class ArticleCategoryModel extends Model
     /**
      * 获取分类下拉框代码
      * @param strign $name name属性值
-     * @param int $selectedValue
-     *            选中值
+     * @param int $selectedValue 选中值
+     * @param int $type 分类类别
      * @return string 分类下拉框代码
      */
-    function getSelectHtml($name,$selectedValue)
+    function getSelectHtml($name,$selectedValue,$type)
     {
         $selectHtml = ($selectedValue == null) ? '<option value="0" selected="selected">根目录</option>' : '<option value="0">根目录</option>';
-        $this->_getSelectHtml($selectHtml, $selectedValue, 0);
+        $this->_getSelectHtml($selectHtml, $selectedValue, 0,$type);
         return '<select class="form-control" name="'.$name.'">' . $selectHtml . '</select>';
     }
 
@@ -73,12 +80,14 @@ class ArticleCategoryModel extends Model
      *            分类下拉框代码
      * @param int $selectedValue
      *            选中值
+     * @param int $type 分类类别
      * @param int $parentID
      *            上级ID
      */
-    function _getSelectHtml(&$selectHtml, $selectedValue, $parentID)
+    function _getSelectHtml(&$selectHtml, $selectedValue, $parentID,$type)
     {
         $where['parentID'] = $parentID;
+        $where['type'] = $type;
         $result = $this->where($where)
             ->order('sortID asc')
             ->select();
@@ -87,7 +96,7 @@ class ArticleCategoryModel extends Model
                 $selectHtml .= '<option value="' . $result[$i]['id'] . '" ' .
                      ($selectedValue == $result[$i]['id'] ? 'selected="selected"' : '') . '>' .
                      $this->getPrefix($result[$i]['classLayer']) . $result[$i]['title'] . '</option>';
-                $this->_getSelectHtml($selectHtml, $selectedValue, $result[$i]['id']);
+                $this->_getSelectHtml($selectHtml, $selectedValue, $result[$i]['id'],$type);
             }
         }
     }
@@ -300,10 +309,12 @@ class ArticleCategoryModel extends Model
     
     /**
      * 获取分类的键值对（id->title）
+     * @param int $type 分类类别
      * @return array id->title
      */
-    function getArray(){        
-       $result=$this->where('1=1')->select();
+    function getArray($type){
+       $where['type']=$type;    
+       $result=$this->where($where)->select();
        $array=array();
        foreach ($result as $item){
            $array[$item['id']]=$item['title'];

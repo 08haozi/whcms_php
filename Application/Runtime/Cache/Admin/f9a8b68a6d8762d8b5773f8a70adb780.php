@@ -84,7 +84,7 @@
 	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
 		<div class="form-group">
 			<label class="sr-only" for="title">分类：</label>
-			<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$categoryID);?>
+			<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$categoryID,1);?>
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="beginTime">发布时间：</label>

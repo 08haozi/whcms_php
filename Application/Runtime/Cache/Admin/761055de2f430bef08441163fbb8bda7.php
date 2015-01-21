@@ -80,7 +80,7 @@
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">分类</label>
 		    <div class="col-sm-4">
-		    	<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$result['categoryID']);?>
+		    	<?php echo D('ArticleCategory')->getSelectHtml('categoryID',$result['categoryID'],1);?>
 		    </div>
 		  </div>
 		  <div class="form-group">

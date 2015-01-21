@@ -59,19 +59,35 @@ document,body{
 }
 .listItem a{
 	display:inline-block;
-	margin:10px;
 	width:304px;
 	height:204px;
+	background:#262626;
+	margin:10px;
+	border:2px solid rgba(255, 225, 64, 0.66);
+	position:relative;
 }
 .img{
-	border:2px solid rgba(255, 225, 64, 0.66);
 	width:300px;
 	height:200px;
+}
+.listItem:hover a:after,.listItem:hover a:before{
+	content:'';
+	width:280px;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:10px;
+	box-shadow:0 0 20px #123aa9;
+	border-radius:100px/10px;
+	z-index:-1;
+}
+.listItem:hover a{
+	border:2px solid #123aa9;
 }
 .info{
 	text-align:center;
 	background-color: rgba(0, 0, 0, 0.1);
-    bottom: 14px;
+    bottom: 12px;
     box-shadow: 0 -2em 2em -2em #000 inset;
     color: #fff;
     height: 2em;
@@ -87,10 +103,6 @@ document,body{
     transition-property: visibility, opacity, height,box-shadow;
     visibility: visible;
     z-index: 120;
-}
-.listItem:hover .img{
-	box-shadow:0 0 15px #123aa9;
-	border:2px solid #123aa9;
 }
 #bottom{
 	 background: url("/statics/img/bg-dark-grain.png") repeat scroll left top #171717;
@@ -128,10 +140,7 @@ document,body{
 }
 .ribbon-top-left, .ribbon-bottom-right {
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
+
 }
 .ribbon {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);

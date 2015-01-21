@@ -1,6 +1,6 @@
 <extend name="./Application/Admin/View/Basic/add.html" />
-<block name="title">后台管理-新建文章分类</block>
-<block name="main-title">新建文章分类</block>
+<block name="title">后台管理-新建{$typeName}分类</block>
+<block name="main-title">新建{$typeName}分类</block>
 <block name="contentTab">
 	<ul class="nav nav-tabs" role="tablist">
 	  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">基本信息</a></li>
@@ -14,7 +14,7 @@
 		  <div class="form-group">
 		    <label for="parentID" class="col-sm-2 control-label">上级分类</label>
 		    <div class="col-sm-4">
-			    {:D('ArticleCategory')->getSelectHtml('parentID')}
+			    {:D('ArticleCategory')->getSelectHtml('parentID',null,$type)}
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -44,8 +44,16 @@
 	<script type="text/javascript">
 	$(function(){ 
 		NavTabsSelect(1);
-		LeftMenuSelect(1,4);
+		if({$type}==1){
+			LeftMenuSelect(1,4); 
+		}
+		else{
+			LeftMenuSelect(1,9);
+		}
 		TipSet(TipShow);
+		
+		$('#aList').attr('href','/Admin/ArticleCategory/lists/type/{$type}');
+		$('#aAdd').attr('href','/Admin/ArticleCategory/Add/type/{$type}');
 		
 		<!-- 验证初始化 -->
 		$contentForm.validate({

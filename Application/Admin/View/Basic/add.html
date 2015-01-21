@@ -25,6 +25,7 @@
         
         <link href="/statics/iCheck/skins/flat/green.css" rel="stylesheet">
         <link href="/statics/iCheck/skins/square/green.css" rel="stylesheet">
+        <block name="head"></block>
     </head>
     <body>
         <include file="Basic/navBar" />
@@ -82,8 +83,8 @@
 					<div class="modal-body" id="sucMsgModalBody"></div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary" data-dismiss="modal">添加相似</button>
-						<a class="btn btn-warning" href="lists">返回列表</a>
-						<a class="btn btn-success" href="add">继续添加</a>
+						<a class="btn btn-warning" href="lists" id="aList">返回列表</a>
+						<a class="btn btn-success" href="add" id="aAdd">继续添加</a>
 					</div>
 				</div>
 			</div>

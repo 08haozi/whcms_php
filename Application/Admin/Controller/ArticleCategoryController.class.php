@@ -10,6 +10,8 @@ class ArticleCategoryController extends AdminBaseController
 {
 
     protected $model;
+    private  $type;
+    private  $typeName;
 
     /**
      * 初始化
@@ -18,6 +20,8 @@ class ArticleCategoryController extends AdminBaseController
     {
         parent::_initialize();
         $this->model = D('ArticleCategory');
+        $this->type=I('get.type');
+        $this->typeName=($this->type==1)?'文章':'图文';
     }
 
     /**
@@ -34,12 +38,14 @@ class ArticleCategoryController extends AdminBaseController
     function lists()
     {
         $result = $this->model
-                       ->GetList(0);
+                       ->GetList(0,$this->type);
         
         $count = count($result);
         
         $this->assign('result', $result)
-             ->assign('count', $count);
+             ->assign('count', $count)
+             ->assign('type',$this->type)
+             ->assign('typeName',$this->typeName);
         
         $this->display('lists');
     }
@@ -53,6 +59,7 @@ class ArticleCategoryController extends AdminBaseController
             $data['parentID']=I('post.parentID');
             $data['title']=I('post.title');
             $data['sortID']=I('post.sortID');
+            $data['type']=$this->type;
             
             if(!$this->model->addM($data)){
                 $this->error('操作失败！');
@@ -60,7 +67,9 @@ class ArticleCategoryController extends AdminBaseController
             $this->success('新建成功！');
         }
         else{
-            $this->display('add');
+            $this->assign('type',$this->type)
+                 ->assign('typeName',$this->typeName)
+                 ->display('add');
         }
     }
     
@@ -71,7 +80,7 @@ class ArticleCategoryController extends AdminBaseController
         //判断修改对象是否存在
         $result=$this->model->find(I('get.id'));
         if (!$result){
-            $this->error('文章分类不存在！',$SERVER['HTTP_REFERER']);
+            $this->error('分类不存在！',$SERVER['HTTP_REFERER']);
         } 
         
         if(IS_POST){   

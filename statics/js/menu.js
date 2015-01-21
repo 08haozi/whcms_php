@@ -10,7 +10,7 @@ $divControl=$('#divControl');
 
 var navList = [
     ['桌面', '/Admin/index'],
-    ['文章', '#'],
+    ['内容', '#'],
     ['设置', '#'],
     ['系统', '#'],
     ['帮助','#']
@@ -23,9 +23,18 @@ var navChildrenList = [
          ['新建文章', '/Admin/Article/Add','glyphicon glyphicon-plus'],
          ['回收站','/Admin/Article/recycle','glyphicon glyphicon-trash']
         ],
-        ['分类管理', 
-         ['分类列表', '/Admin/ArticleCategory/lists','glyphicon glyphicon-align-justify'], 
-         ['新建分类', '/Admin/ArticleCategory/Add','glyphicon glyphicon-plus']
+        ['文章分类管理', 
+         ['分类列表', '/Admin/ArticleCategory/lists/type/1','glyphicon glyphicon-align-justify'], 
+         ['新建分类', '/Admin/ArticleCategory/Add/type/1','glyphicon glyphicon-plus']
+        ],
+        ['图文管理', 
+         ['图文列表', '/Admin/ArticleAlbum/lists','glyphicon glyphicon-align-justify'], 
+         ['新建图文', '/Admin/ArticleAlbum/Add','glyphicon glyphicon-plus'],
+         ['回收站','/Admin/ArticleAlbum/recycle','glyphicon glyphicon-trash']
+        ],
+        ['图文分类管理', 
+         ['分类列表', '/Admin/ArticleCategory/lists/type/2','glyphicon glyphicon-align-justify'], 
+         ['新建分类', '/Admin/ArticleCategory/Add/type/2','glyphicon glyphicon-plus']
         ]
     ],
     [

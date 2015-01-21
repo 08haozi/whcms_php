@@ -1,6 +1,6 @@
 <extend name="./Application/Admin/View/Basic/lists.html" />
-<block name="title">后台管理-文章分类列表</block>
-<block name="main-title">文章分类列表 </block>
+<block name="title">后台管理-{$typeName}分类列表</block>
+<block name="main-title">{$typeName}分类列表 </block>
 <block name="content-tabs">
 <li role="presentation" class="active"><a
 	href="/Admin/ArticleCategory/lists">全部（{$count}）</a></li>
@@ -8,14 +8,13 @@
 <block name="content-control">
 	<button type="button" id="btnSelect" class="btn btn-info btn-sm">全 选</button>
 	<button type="button" class="btn btn-danger btn-sm" id="btnDel">删 除</button>
-	<a class="btn btn-success btn-sm" href="/Admin/ArticleCategory/add">新 建</a>
+	<a class="btn btn-success btn-sm" href="/Admin/ArticleCategory/add/type/{$type}">新 建</a>
 </block>
 <block name="content-search">
 </block>
 <block name="content-thead">
 	<tr id="headerMain">
 		<th></th>
-		<th>ID</th>
 		<th>类别名称</th>
 	</tr>
 </block>
@@ -23,7 +22,6 @@
 	<foreach name="result" item="item" key="i">
 		<tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
-			<td>{$item.id}</td>
 			<td>{$item.classLayer} <a href="/Admin/ArticleCategory/edit/id/{$item.id}">{$item.title}</a></td>
 		</tr>
 	</foreach> 
@@ -55,7 +53,12 @@
 	<script type="text/javascript">
 		$(function(){ 
 			NavTabsSelect(1);
-			LeftMenuSelect(1,3); 
+			if({$type}==1){
+				LeftMenuSelect(1,3); 
+			}
+			else{
+				LeftMenuSelect(1,8);
+			}
 			
 			var delIDs;
 			$('#btnDel').click(function(){

@@ -254,7 +254,8 @@ class ArticleController extends AdminBaseController
         
         $count = $this->model->where($where)->count();
         
-        $categoryArray = D('ArticleCategory')->getArray();
+        $categoryModel=D('ArticleCategory');
+        $categoryArray = $categoryModel->getArray($categoryModel::TypeArticle);
         
         $this->assign('categoryID', $categoryID)
             ->assign('sBegin', $begin)
