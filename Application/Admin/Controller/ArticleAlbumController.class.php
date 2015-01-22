@@ -28,50 +28,66 @@ class ArticleAlbumController extends AdminBaseController
     }
     
     function add(){
-        $this->display('add');
+        if(IS_POST){
+            foreach(I('post.thumbList') as $value){
+                $a.=','.$value;
+            }
+            $this->success($a);   
+        }
+        else{
+            $this->display('add');
+        }
     }
     
-    function checkExists(){
-        echo 0;
+    /**
+     * 删除图片
+     */
+    function delThumb(){
+       $value=I('post.value');
+       if(!empty($value)){
+           $array=explode('#',$value);
+           $this->_delFile($array[0]);
+           $this->_delFile($array[1]);
+           $this->_delFile($array[2]);
+       }
+       $this->success('删除成功！');
     }
     
-    function uploadify(){
-    $targetFolder = '/upload'; // Relative to the root
-
-$verifyToken = md5('unique_salt' . $_POST['timestamp']);
-
-if (!empty($_FILES) 
-    //&& $_POST['token'] == $verifyToken
-    ) {
-	$tempFile = $_FILES['Filedata']['tmp_name'];
-	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
-	$targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
-	
-	// Validate the file type
-	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
-	$fileParts = pathinfo($_FILES['Filedata']['name']);
-	
-	if (in_array($fileParts['extension'],$fileTypes)) {
-		move_uploaded_file($tempFile,$targetFile);
-		echo '1';
-	} else {
-		echo 'Invalid file type.';
-	}
-}
-        $upload = new \Think\Upload(); // 实例化上传类
-        $upload->maxSize = 3145728; // 设置附件上传大小,3M
-        $upload->exts = array('jpg','gif','png','jpeg'); // 设置附件上传类型
-        $upload->rootPath  = './upload/articleAlbum/image/'; // 设置附件上传目录
-        $upload->saveName = 'time'; // 采用时间戳命名
-        
-
-        if( !$upload->upload() )
-        {
-            echo '0';
-        }else{
-            $info=$upload->getUploadFileInfo();
-            $src='s_'.$info[0]['savename'];
-            echo $src;
-        } 
+    /**
+     * 删除文件
+     * @param unknown $fileName
+     */
+    private function _delFile($fileName){
+        if(!empty($fileName)){
+            $fileName='.'.$fileName;
+            if(file_exists($fileName))
+            {
+                $result=unlink($fileName);
+            }
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

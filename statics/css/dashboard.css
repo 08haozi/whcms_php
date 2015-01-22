@@ -1,7 +1,19 @@
-/*
- * Base structure
- */
-
+@CHARSET "UTF-8";	
+html, body, main, header, footer, section, aside, article, nav, time, div, span, em, strong, i, b, small, code, h1, h2, h3, h4, h5, p, pre, ul, ol, li, dl, dt, dd, table, thead, tbody, tfoot, tr, th, td form, fieldset, input, select, textarea, button, legend, label, img, a, progress, meter {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    vertical-align: baseline;
+    list-style:none;
+}
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
@@ -134,3 +146,14 @@ line-height:250px;font-size:35px;font-weight:bold;color:#fff;}
 
 /*标题图片*/
 .imgTitle{max-height:140px;}
+
+/*缩略图列表*/
+.thumbList{}
+.thumbList a{cursor:pointer;}
+.thumbList li{float:left;position:relative;padding:10px;}
+.thumbList img{border:2px solid #999;cursor:pointer;}
+.thumbList img.isTitle{border:2px solid #d37400;}
+.thumbList div{cursor:move;display:none;height:100px;width:150px;position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.5);text-align:center;padding-top:40px;color:#fff;}
+.thumbList .btn-danger{position:absolute;right:15px;top:15px;display:none;}
+.thumbList li:hover .btn-danger{display:block;}
+.thumbList li:hover div{display:block;}

@@ -5,6 +5,19 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 
+$session_name = session_name();
+if (!isset($_POST[$session_name])) {
+    exit();
+} 
+else {
+    session_id($_POST[$session_name]);
+    session_start();
+    if (!isset($_SESSION["ManagerID"])) {
+        echo 404;
+        exit();
+    }
+}
+
 // Define a destination
 $targetFolder = '/upload/articleAlbum/image/'.date('Ymd').'/'; // Relative to the root
 
@@ -20,18 +33,21 @@ if (!empty($_FILES)) {
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 	
 	$targetFileName=time().rand(100, 999);
-	$thumbFileName=rtrim($targetPath,'/') . '/' .$targetFileName.'s'.'.'.$fileParts['extension'];//缩略图地址
+	$targetPath=rtrim($targetPath,'/') . '/';
+	$file=$targetFileName.'.'.$fileParts['extension'];
+	$thumbFile1=$targetFileName.'s'.'.'.$fileParts['extension'];//缩略图地址300*200
+	$thumbFile2=$targetFileName.'ss'.'.'.$fileParts['extension'];//缩略图地址150*100
 	$targetFileName.='.'.$fileParts['extension'];
-	$targetFile = rtrim($targetPath,'/') . '/' . $targetFileName;
+	$targetFile = $targetPath.$targetFileName;
 	
 	// Validate the file type
-	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
-	
+	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions	
 	
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		move_uploaded_file($tempFile,$targetFile);
-		mkThumb($targetFile,300,200,$thumbFileName);
-		echo $targetFolder.$targetFileName;
+		mkThumb($targetFile,300,200,$targetPath.$thumbFile1);
+		mkThumb($targetFile,150,100,$targetPath.$thumbFile2);
+		echo $targetFolder.$file.'#'.$targetFolder.$thumbFile1.'#'.$targetFolder.$thumbFile2;
 	} else {
 		echo 'Invalid file type.';
 	}
