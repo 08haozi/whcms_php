@@ -1,10 +1,9 @@
 <extend name="./Application/Admin/View/Basic/lists.html" />
-<block name="title">后台管理-文章列表</block>
-<block name="main-title">文章列表 </block>
+<block name="title">后台管理-图文列表</block>
+<block name="main-title">内容列表 </block>
 <block name="content-tabs">
 <li role="presentation" class="active"><a
 	href="/Admin/Article/lists">全部（{$count}）</a></li>
-<li><a href="#">热卖</a></li>
 </block>
 <block name="content-control">
 	<button type="button" id="btnSelect" class="btn btn-info btn-sm">全 选</button>
@@ -15,7 +14,7 @@
 	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
 		<div class="form-group">
 			<label class="sr-only" for="title">分类：</label>
-			{:D('ArticleCategory')->getSelectHtml('categoryID',$categoryID,1)}
+			{:D('ArticleCategory')->getSelectHtml('categoryID',$categoryID,2)}
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="beginTime">发布时间：</label>
@@ -35,9 +34,9 @@
 <block name="content-thead">
 	<tr id="headerMain">
 		<th></th>
+		<th>封面</th>
 		<th>标题</th>
 		<th>分类</th>
-		<th>摘要</th>
 		<th>发布时间</th>
 		<th>排序</th>
 	</tr>
@@ -46,17 +45,11 @@
 	<foreach name="result" item="item" key="i">
 		<tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
+			<th></th>
 			<td>
 				<a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a>
-				<if condition="strlen($item['imgLink']) gt 0">
-					<a href="{$item.imgLink}" target="_blank"> <span class="glyphicon glyphicon-picture"></span></a>
-				</if>
-				<if condition="strlen($item['outerLink']) gt 0">
-					<a href="{$item.outerLink}" target="_blank"> <span class="glyphicon glyphicon-link"></span></a>
-				</if>
 			</td>
 			<td>{:$categoryArray[$item['categoryID']]}</td>
-			<td>{$item.summary}</td>
 			<td>{$item.createtime}</td>
 			<td>{$item.sortID}</td>
 		</tr>
@@ -93,7 +86,7 @@
 	<script type="text/javascript">
 		$(function(){ 
 			NavTabsSelect(1);
-			LeftMenuSelect(1,0); 
+			LeftMenuSelect(1,4); 
 			
 			var delIDs;
 			$('#btnDel').click(function(){

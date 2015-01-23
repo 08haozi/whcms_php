@@ -44,12 +44,8 @@
 	<script type="text/javascript">
 	$(function(){ 
 		NavTabsSelect(1);
-		if({$type}==1){
-			LeftMenuSelect(1,4); 
-		}
-		else{
-			LeftMenuSelect(1,9);
-		}
+		LeftMenuSelect(1);
+
 		TipSet(TipShow);
 		
 		$('#aList').attr('href','/Admin/ArticleCategory/lists/type/{$type}');

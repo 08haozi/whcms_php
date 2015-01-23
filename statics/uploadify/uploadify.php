@@ -7,6 +7,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 $session_name = session_name();
 if (!isset($_POST[$session_name])) {
+    echo 404;
     exit();
 } 
 else {
