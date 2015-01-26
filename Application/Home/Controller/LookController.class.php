@@ -35,7 +35,7 @@ class LookController extends Controller {
 
         $categoryTitle=$categoryModel->getTitle($result['categoryID']);
         
-        $categoryArray = $categoryModel->getList(0);
+        $categoryArray = $categoryModel->getList(0,$categoryModel::TypeArticle);
         
         //网站信息
         $sites=json_decode(D('Admin/KeyValue')->getValue('sitesInfo'),true);

@@ -134,6 +134,7 @@ body {
 .rdlTable{margin-top:5px;}
 .rdlTable td{padding-right:10px;}
 .is-error {color: #a94442;border-color: #a94442;}
+td img{border:1px solid #ddd;}
 
 /*桌面*/
 .index-main{padding:40px;}

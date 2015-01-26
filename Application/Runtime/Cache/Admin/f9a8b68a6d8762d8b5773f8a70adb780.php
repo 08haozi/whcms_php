@@ -61,7 +61,7 @@
                     <div id="mainTop">
                         <h4 id="contentTitle">
                         	<span class="glyphicon glyphicon-align-justify"></span>
-                            内容列表 
+                            文章列表 
                         </h4>
                         <ul role="tablist" class="nav nav-tabs" id="contentTabs">
                             

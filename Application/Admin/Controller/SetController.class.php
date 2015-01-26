@@ -25,6 +25,7 @@ class SetController extends AdminBaseController
                 'title'=>I('post.title'),
                 'no'=>I('post.no'),
                 'count'=>html_entity_decode(stripslashes(I('post.count'))),
+                'share'=>html_entity_decode(stripslashes(I('post.share'))),
                 'copyright'=>I('post.copyright'),
                 'phone'=>I('post.phone'),
                 'qq'=>I('post.qq'),

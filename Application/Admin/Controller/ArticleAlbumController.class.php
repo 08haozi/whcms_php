@@ -71,18 +71,6 @@ class ArticleAlbumController extends AdminBaseController
         }
     }
     
-    function add123(){
-        if(IS_POST){
-            foreach(I('post.thumbList') as $value){
-                $a.=','.$value;
-            }
-            $this->success($a);   
-        }
-        else{
-            $this->display('add');
-        }
-    }
-    
     /**
      * 删除图片
      */
@@ -108,6 +96,41 @@ class ArticleAlbumController extends AdminBaseController
             {
                 $result=unlink($fileName);
             }
+        }
+    }
+    
+    /**
+     * 修改
+     */
+    function edit()
+    {
+        // 判断修改对象是否存在
+        $result = $this->model->find(I('get.id'));
+        if (! $result) {
+            $this->error('图文不存在！', $SERVER['HTTP_REFERER']);
+        }
+    
+        if (IS_POST) {
+            $data['categoryID']=I('post.categoryID');
+            $data['title']=I('post.title');
+            $data['createtime']=I('post.createtime');
+            $data['isAudit']=I('post.isAudit');
+            $data['sortID']=I('post.sortID');
+    
+            $editResult=$this->model->editM($result['id'],$data,I('post.thumbList'));
+            if (true===$editResult) {
+                $this->success('修改成功！', $SERVER['HTTP_REFERER']);
+            }
+            $this->error($editResult, $SERVER['HTTP_REFERER']);
+        } 
+        else {
+            $itemsModel=D('ArticleAlbumItems');
+            $where['articleID']=$result['id'];
+            $itemsResult=$itemsModel->where($where)->order('sortID asc')->select();
+            
+            $this->assign('result', $result)
+                 ->assign('itemsResult',$itemsResult);
+            $this->display('edit');
         }
     }
     
@@ -167,6 +190,18 @@ class ArticleAlbumController extends AdminBaseController
     
         $categoryModel=D('ArticleCategory');
         $categoryArray = $categoryModel->getArray($categoryModel::TypeArticleAlbum);
+        
+        //封面键值对列表 文章ID=》封面图片路径
+        $albumItemsModel=D('ArticleAlbumItems');
+        foreach ($result as $item){
+            $albumItems=$albumItemsModel->getTitle($item['id']);
+            if($albumItems){
+                $albumArray[$item['id']]=$albumItems['picUrlSS'];
+            }
+            else{
+                $albumArray[$item['id']]='/statics/img/noTitle.png';
+            }
+        }
     
         $this->assign('categoryID', $categoryID)
         ->assign('sBegin', $begin)
@@ -177,7 +212,8 @@ class ArticleAlbumController extends AdminBaseController
         ->assign('page', $page)
         ->assign('pageNum', $pageNum)
         ->assign('count', $count)
-        ->assign('categoryArray', $categoryArray);
+        ->assign('categoryArray', $categoryArray)
+        ->assign('albumArray', $albumArray);
     
         $this->display($templateName);
     }

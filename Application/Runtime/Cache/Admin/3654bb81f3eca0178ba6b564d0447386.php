@@ -174,10 +174,10 @@
 		$(function(){ 
 			NavTabsSelect(1);
 			if(<?php echo ($type); ?>==1){
-				LeftMenuSelect(1,3); 
+				LeftMenuSelect(1,2); 
 			}
 			else{
-				LeftMenuSelect(1,8);
+				LeftMenuSelect(1,6);
 			}
 			
 			var delIDs;

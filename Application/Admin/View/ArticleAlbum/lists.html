@@ -11,7 +11,7 @@
 	<a class="btn btn-success btn-sm" href="/Admin/Article/add">新 建</a>
 </block>
 <block name="content-search">
-	<form class="form-inline" role="form" action="/Admin/Article/search" method="get">
+	<form class="form-inline" role="form" action="/Admin/ArticleAlbum/search" method="get">
 		<div class="form-group">
 			<label class="sr-only" for="title">分类：</label>
 			{:D('ArticleCategory')->getSelectHtml('categoryID',$categoryID,2)}
@@ -45,9 +45,13 @@
 	<foreach name="result" item="item" key="i">
 		<tr>
 			<td class="tdSelect"><input type="checkbox" class="ckbSelect iCheck" data-id="{$item.id}" /></td>
-			<th></th>
 			<td>
-				<a href="/Admin/Article/edit/id/{$item.id}">{$item.title}</a>
+				<a href="/Admin/ArticleAlbum/edit/id/{$item.id}">
+					<img src="{:$albumArray[$item['id']]}">
+				</a>
+			</td>
+			<td>
+				<a href="/Admin/ArticleAlbum/edit/id/{$item.id}">{$item.title}</a>
 			</td>
 			<td>{:$categoryArray[$item['categoryID']]}</td>
 			<td>{$item.createtime}</td>
