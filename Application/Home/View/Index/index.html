@@ -6,7 +6,7 @@
 				<ul id="list">
 					<foreach name="result" item="item" key="i">
 						<li class="listItem">
-							<a href="/Home/look/index/id/{$item.id}" target="_blank">
+							<a href="/Home/{$item.id}/{$item.title}" target="_blank">
 								<img class="img" src="/statics/img/zw.gif" alt="{$item.title}" data-original="{$item.imgLink}"/>
 							</a>
 							<p class="info">{$item.title}</p>

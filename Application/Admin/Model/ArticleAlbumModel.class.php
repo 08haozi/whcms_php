@@ -94,4 +94,65 @@ class ArticleAlbumModel extends Model {
         $this->commit();
         return true;
     }
+    
+    /**
+     * 删除
+     * @param unknown $id ID
+     * @return string|boolean 成功返回true，失败返回错误信息
+     */
+    function deleteM($id){
+        $this->startTrans();
+        
+        //删除图片明细
+        $itemsModel=D('ArticleAlbumItems');
+        $where1['articleID']=$id;
+        $result2=$itemsModel->where($where1)->delete();
+        if(false!==$result2){
+            //删除图文
+            $where2['id']=$id;
+            if(false===$this->where($where2)->delete())
+            {
+                $this->rollback();
+                return '删除图文失败';
+            }
+        }
+        else{
+            $this->rollback();
+            return '删除图片明细失败';
+        }
+        
+        $this->commit();
+        return true;
+    }
+    
+    /**
+     * 删除全部
+     * @return string|boolean 成功返回true，失败返回错误信息
+     */
+    function deleteAllM(){
+        $this->startTrans();
+    
+        //获取要删除的列表
+        $where['isDel']=1;
+        $list=$this->where($where)->select();
+        
+        $itemsModel=D('ArticleAlbumItems');
+        foreach ($list as $item){
+            //删除图片明细
+            $where1['articleID']=$item['id'];
+            $result2=$itemsModel->where($where1)->delete();
+            if(false===$result2){
+                $this->rollback();
+                return '删除图片明细失败';
+            }
+        }
+        
+        if(false===$this->where($where)->delete()){
+            $this->rollback();
+            return '删除图文失败';
+        }
+    
+        $this->commit();
+        return true;
+    }
 }

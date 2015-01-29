@@ -68,15 +68,13 @@ function NavTabsSelect(index) {
     $($navTabs.children()[index]).addClass('active');
 }
 
-function LeftMenuSelect(index0, index1) {
+function LeftMenuSelect(index0, url) {
     var menuHtml = '';
-    var count = 0;
     if (navChildrenList[index0] != null) {
         for (i = 0; i < navChildrenList[index0].length; i++) {
             menuHtml += '<ul class="nav nav-sidebar" ><li class="dropdown-header">' + navChildrenList[index0][i][0] + '<span class="caret"></span></li>';
             for (j = 1; j < navChildrenList[index0][i].length; j++) {
-                menuHtml += '<li ' + ((count == index1) ? 'class="active"' : '') + '><a href="' + navChildrenList[index0][i][j][1] + '"><span class="'+ navChildrenList[index0][i][j][2] +'"></span> ' + navChildrenList[index0][i][j][0] + '</a></li>';
-                count++;
+                menuHtml += '<li ' + ((navChildrenList[index0][i][j][1] == url) ? 'class="active"' : '') + '><a href="' + navChildrenList[index0][i][j][1] + '"><span class="'+ navChildrenList[index0][i][j][2] +'"></span> ' + navChildrenList[index0][i][j][0] + '</a></li>';
             }
             menuHtml += '</ul>';
         }

@@ -174,10 +174,10 @@
 		$(function(){ 
 			NavTabsSelect(1);
 			if(<?php echo ($type); ?>==1){
-				LeftMenuSelect(1,2); 
+				LeftMenuSelect(1,'/Admin/ArticleCategory/lists/type/1'); 
 			}
 			else{
-				LeftMenuSelect(1,6);
+				LeftMenuSelect(1,'/Admin/ArticleCategory/lists/type/2');
 			}
 			
 			var delIDs;

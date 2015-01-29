@@ -90,7 +90,7 @@
 	<script type="text/javascript">
 		$(function(){ 
 			NavTabsSelect(1);
-			LeftMenuSelect(1,4); 
+			LeftMenuSelect(1,'/Admin/ArticleAlbum/lists'); 
 			
 			var delIDs;
 			$('#btnDel').click(function(){
@@ -106,7 +106,7 @@
 			$('#btnDelConfirm').click(function(){
 				$('#deleteModal').modal('hide');
 				$.ajax({
-					url : "/Admin/Article/recycle",
+					url : "/Admin/ArticleAlbum/recycle",
 					data : 'ids='+delIDs,
 					type : "POST",
 					beforeSend : function() {

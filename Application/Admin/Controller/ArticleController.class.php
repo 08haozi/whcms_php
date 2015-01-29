@@ -68,8 +68,7 @@ class ArticleController extends AdminBaseController
     function delete()
     {
         if (IS_POST) {
-            $where['id'] = array('in',I('post.ids')
-            );
+            $where['id'] = array('in',I('post.ids'));
             
             $this->model->where($where)->delete();
             $this->success('删除成功，页面自动刷新！');
