@@ -36,7 +36,8 @@ class IndexController extends Controller {
         $count = $model->where($where)->count();
         
         $categoryModel=D('Admin/ArticleCategory');
-        $categoryArray = $categoryModel->getList(0,$categoryModel::TypeArticle);
+        $categoryList = $categoryModel->getArray(1);
+        $categoryArray = $categoryModel->getList(0,1);
         
         //网站信息
         $sites=json_decode(D('Admin/KeyValue')->getValue('sitesInfo'),true);
@@ -47,6 +48,7 @@ class IndexController extends Controller {
         $this->assign('categoryID', $categoryID)
              ->assign('count', $count)
              ->assign('result', $result)
+             ->assign('categoryList', $categoryList)
              ->assign('categoryArray', $categoryArray)
              ->assign('sites',$sites)
              ->assign('seo',$seo);

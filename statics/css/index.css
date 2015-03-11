@@ -86,7 +86,7 @@ document,body{
 }
 .info{
 	text-align:center;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.5);
     bottom: 12px;
     box-shadow: 0 -2em 2em -2em #000 inset;
     color: #fff;

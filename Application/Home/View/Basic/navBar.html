@@ -1,8 +1,8 @@
 <ul class="nav navbar-nav">
 	<if condition="$categoryID eq 0">
-		<li role="presentation" class="active"><a href="/">全部 <span class="badge">{$count}</span></a></li>
+		<li role="presentation" class="active"><a href="/">全部作品 <span class="badge">{$count}</span></a></li>
 	<else /> 
-		<li role="presentation"><a href="/">全部</a></li>
+		<li role="presentation"><a href="/">全部作品</a></li>
 	</if>
 	<foreach name="categoryArray" item="item" key="i">
 		<if condition="$item['id'] eq $categoryID">
